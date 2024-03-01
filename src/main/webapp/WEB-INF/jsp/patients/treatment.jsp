@@ -141,7 +141,7 @@
 									<td style="width: 15%;">${treatment.medicineTime}</td>
 									<td style="width: 15%;">${treatment.treatmentDate}</td>
 									<td style="width: 15%;">${treatment.bill}</td>
-									<td class="badge bg-success" style="width: 15%;">${treatment.billPaid}</td>
+									<td style="width: 15%;">${treatment.billPaid}</td>
 									<td style="width: 20%;">${treatment.paymentMode}</td>
 
 								</tr>
