@@ -56,5 +56,9 @@ public interface MessageConstants {
 	String UPDATE_STAFF_SUCCESS_MESSAGE = "Staff updated successfully";
 
 	String UPDATE_STAFF_ERROR_MESSAGE = "Unable to update staff";
+	
+	// Treatment Message
+	String ADD_Treatment_SUCCESS_MESSAGE = "Treatment Details Added  Successfully";
+	String ADD_Treatment_ERROR_MESSAGE = "Unable To Add Treatment Details";
 
 }

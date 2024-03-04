@@ -62,13 +62,14 @@ li {
 									</div>
 									<div class="col-md-10">
 										<div class="row PatientsOverview1">
-											<div class="col-md-8">
+											<div class="col-md-6">
 												<div class="border-bottom pb-2 my-2">
 												<h2>${patientList.firstName} ${patientList.lastName}</h2>
 												<p class="m-0 p-0">679 padmavati sahakarnagar 01 near
 													power House</p>
 												</div>
 											 </div>
+											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/treatment/treatment-form/${patientList.id }">Treatment</a></div>
 											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/samtiPatra/sanmtiptra-form/${patientList.id }">Samti Patra</a></div>
 											 <div class="col-md-2"><a class="btn btn-sm Spti-btn" href="/discharge/discharge-form/${patientList.id }">Discharge</a></div>
 										</div>
