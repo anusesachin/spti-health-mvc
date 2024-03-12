@@ -1,5 +1,8 @@
 package com.nt.cntrl;
 
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,11 @@ import com.nt.Dto.patients.AdmitPatientRequestDto;
 import com.nt.Dto.patients.AdmitPatientResponseDto;
 import com.nt.Dto.patients.DischargePatientRequestDto;
 import com.nt.Dto.patients.PatientResponseDto;
+import com.nt.Dto.treatment.TreatmentResponse;
 import com.nt.service.AdmitPatientService;
 import com.nt.service.DischargePatientService;
 import com.nt.service.PatientService;
+import com.nt.service.TreatmentService;
 
 @Controller
 @RequestMapping("/discharge")
@@ -30,6 +35,8 @@ public class DischargePatientController {
 	private DischargePatientService dischargePatientService;
 	@Autowired
 	private AdmitPatientService admitPatientService;
+	@Autowired
+	TreatmentService treatmentService;
 	
 
 	@GetMapping("/discharge-form/{id}")
@@ -39,6 +46,23 @@ public class DischargePatientController {
 		
 		AdmitPatientResponseDto admitPatientResponseDto = admitPatientService.getAdmitPatientBypatienId(id);
 		model.addAttribute( "admitPatientResponseDto", admitPatientResponseDto );
+
+		List<TreatmentResponse> treatmentResponse=treatmentService.getTreatmentdetailsByAdimittance(id);
+		model.addAttribute("treatmentList", treatmentResponse);
+		Iterator<TreatmentResponse> iterator = treatmentResponse.iterator();
+		int amountPaid=0;
+		int amounttobePaid=0;
+    while (iterator.hasNext()) {
+        TreatmentResponse treatment = iterator.next();
+
+        if ("Yes".equalsIgnoreCase(treatment.getBillPaid())) {
+            amountPaid+=treatment.getBill();
+        } else {
+            amounttobePaid += treatment.getBill();
+        }
+    }
+	model.addAttribute("amountPaid", amountPaid);
+	model.addAttribute("amounttobePaid", amounttobePaid);
 		
 		return "discharge/dischargeForm";
 	}

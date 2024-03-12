@@ -141,9 +141,17 @@
 									<td style="width: 15%;">${treatment.medicineTime}</td>
 									<td style="width: 15%;">${treatment.treatmentDate}</td>
 									<td style="width: 15%;">${treatment.bill}</td>
-									<td style="width: 15%;">${treatment.billPaid}</td>
+									<td style="width: 15%;">
+									<span class="<c:choose>
+                <c:when test="${treatment.billPaid eq 'Yes'}">
+                    badge bg-success
+                </c:when>
+                <c:otherwise>
+                    badge bg-danger
+                </c:otherwise>
+             </c:choose>"
+      style="width:30%">${treatment.billPaid}</span></td>
 									<td style="width: 20%;">${treatment.paymentMode}</td>
-
 								</tr>
 							</c:forEach>
 						
