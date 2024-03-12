@@ -64,33 +64,32 @@
 				<input type="hidden" name="patientId" value="${patient.id}">
 				<input type="hidden" name="admitPatientId" value="${admitPatientResponseDto.id}">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<label class="col-form-label spti-label">MLC NO.</label>
 						<input type="text"name="MLC_No" class="col-md-12 spti-inpt" placeholder="eg. 01 ">
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<label class="col-form-label spti-label">IPD NO.</label>
 						<input type="text"name="IPD_No" class="col-md-12 spti-inpt" placeholder="eg. 01 ">
-					</div>				
-				</div>
-					<div class="row">
-						<div class="col-md-6">
+					</div>	
+					<div class="col-md-4">
 							<label class="col-form-label spti-label">Patient Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
 								name="firstName" class="col-md-12 spti-inpt" value= "${patient.firstName}">
-						</div>
-
-						<div class="col-md-6">
+						</div>			
+				</div>
+					<div class="row">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Last Name</label> <input
 								type="text" name="lastName" class="col-md-12 spti-inpt"
 								value="${patient.lastName}">
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Mobile Number</label>
 							<input type="text" name="phoneNumber" class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Gender</label> <select
 								name="gender" class="col-md-12 spti-inpt">
 								<c:choose>
@@ -118,14 +117,15 @@
 								</c:choose>
 							</select>
 						</div>
-						
-						<div class="col-md-6">
+						</div>
+						<div class="row">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Age</label> <input
 								type="number" name="age" class="col-md-12 spti-inpt"
 								value="${patient.age}">
 						</div>
 
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Status</label> <select
 								name="admitDischargeStatus" class="col-md-12 spti-inpt">
 								<c:choose>
@@ -147,41 +147,96 @@
 						</div>
 
 						
-		                          <div class="col-md-6">
+		                          <div class="col-md-4">
 												<label class="col-form-label spti-label">Admission Date And Time</label>
 		    									<input type="datetime-local" name="admissionDate" class="col-md-12 spti-inpt" value="${admitPatientResponseDto.admissionDate}">
 		
 								</div>
-								<div class="col-md-6">
+								</div>
+								<div class="row">
+								<div class="col-md-4">
 										<label class="col-form-label spti-label">Discharge Date And Time</label>
 				    					<input type="datetime-local" name="dischargeDate" class="col-md-12 spti-inpt">
 								</div>
 								
-								  <div class="col-md-6">
+								  <div class="col-md-4">
 												<label class="col-form-label spti-label">Consultatnt</label>
 		    									<input type="text" name="consultatnt" class="col-md-12 spti-inpt">
 		
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-4">
 										<label class="col-form-label spti-label">Diagnosis</label>
 				    					<input type="text" name="diagnosis" class="col-md-12 spti-inpt">
 								</div>
-		
+								</div>
 		
 								<!-- <div class="col-md-4">
 										<label class="col-form-label spti-label">Admission Time
 									</label> <input type="time" name="admissionTime"
 											class="col-md-12 spti-inpt">
 									</div> -->
-						<div class="col-md-6">
+									<div class="row">
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Address</label>
 							<textarea class="col-md-12 spti-textarea-height" name="address"
 								>${patient.address}</textarea>
 						</div>
-						<div class="col-md-6">
-							<label class="col-form-label spti-label">Clinical History and Examination</label>
-							<textarea class="col-md-12 spti-textarea-height" name="clinical_History"
-								></textarea>
+						<div class="col-md-4">
+												<label class="col-form-label spti-label">Amount Paid</label>
+		    									<input type="text" name="amountPaid" value="${amountPaid}" class="col-md-12 spti-inpt">
+		
+								</div>
+						<div class="col-md-4">
+												<label class="col-form-label spti-label">Amount to be Paid</label>
+		    									<input type="text" name="amounttobePaid" value="${amounttobePaid}" class="col-md-12 spti-inpt">
+		
+								</div></div>
+								<div class="row">
+						<div class="col-md-12">
+							<label class="col-form-label spti-label">Treatment History</label>
+							<%-- <textarea rows="10" cols="50" class="col-md-12 spti-textarea-height" name="clinical_History">
+							<c:forEach var="treatment" items="${treatmentList}">
+			${treatment.medicineName}, ${treatment.medicineTime},${treatment.treatmentDate},${treatment.bill}
+        </c:forEach>
+								</textarea> --%>
+								<div class="col-md-12 spti-textarea-height" style="height: fit-content !important;" name="clinical_History">
+								 <table style="width:100%;">
+        <thead>
+            <tr>
+                <th style="width: 5%;">SNo</th>
+						<th style="width: 15%;">Medicine</th>
+						<th style="width: 15%;">Medicine Time</th>
+						<th style="width: 15%;">Medicine Date</th>
+						<th style="width: 15%;">Bill($)</th>
+						<th style="width: 15%;">Bill Paid</th>
+						<th style="width: 20%;">Payment Mode</th>
+            </tr>
+        </thead>
+        <tbody>
+		<% int i = 1; %> 
+            <c:forEach var="treatment" items="${treatmentList}">
+                <tr>
+                   <td style="width: 5%;"><%= i %> <% i++; %></td>
+									<td style="width: 15%;">${treatment.medicineName}</td>
+									<td style="width: 15%;">${treatment.medicineTime}</td>
+									<td style="width: 15%;">${treatment.treatmentDate}</td>
+									<td style="width: 15%;">${treatment.bill}</td>
+									<td style="width: 15%;">
+									<span class="<c:choose>
+                <c:when test="${treatment.billPaid eq 'Yes'}">
+                    badge bg-success
+                </c:when>
+                <c:otherwise>
+                    badge bg-danger
+                </c:otherwise>
+             </c:choose>"
+      style="width:30%">${treatment.billPaid}</span></td>
+									<td style="width: 20%;">${treatment.paymentMode}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table> </div>
+						</div>
 						</div>
 
 					</div>
