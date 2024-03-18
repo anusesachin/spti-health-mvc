@@ -363,14 +363,13 @@ font-size:25px;
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>Preferred Doctor</th><th>Date Of OPD Treatment</th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
 
 				// Add data rows
 				for (var i = 0; i < data.length; i++) {
 				    tableHtml += '<tr>';
 				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
 				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				    tableHtml += '<td>' + data[i].seenByDoctor + '</td>';
 				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
 				    tableHtml += '<td>' + data[i].bill + '</td>';
 				    tableHtml += '<td>' + data[i].pendingAmount + '</td>';
