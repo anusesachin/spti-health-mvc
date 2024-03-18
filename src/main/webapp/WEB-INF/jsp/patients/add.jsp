@@ -61,10 +61,7 @@
 	<div class="height-90">
 		<div class="main-content ">
 			<div class="modal-body ">
-			                    <div class="col-md-4 offset-md-4">
-			
-				<h5 class="modal-title mt-3 " id="exampleModalLabel">Add Patient</h5>
-				</div>
+				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
 				<form class="login-form" action="/patients" method="post">
 					<div class="row  ">
 					<div class="col-md-1">
