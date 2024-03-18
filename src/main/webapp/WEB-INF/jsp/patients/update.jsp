@@ -51,6 +51,23 @@
 	padding: 4px;
 	color: #757575;
 }
+
+.error {
+	color: red;
+	font-size: 12px;
+}
+
+.error input {
+	border: 1px solid red;
+}
+
+.error select {
+	border: 1px solid red;
+}
+
+.error textarea {
+	border: 1px solid red;
+}
 </style>
 </head>
 
@@ -60,7 +77,8 @@
 		<div class="main-content  ">
 			<h5 class="modal-title" id="exampleModalLabel">Update Patient</h5>
 			<div class="modal-body">
-				<form class="login-form" action="/patients/update" method="post">
+				<form class="login-form" id="login-form" action="/patients/update"
+					method="post">
 					<div class="row">
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">First Name</label> <span
@@ -72,19 +90,22 @@
 						</div>
 
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
-								placeholder="cena" value="${patient.lastName}">
+							<label class="col-form-label spti-label">Last Name</label> <span
+								class="mandatory-sign">*</span> <input type="text"
+								name="lastName" class="col-md-12 spti-inpt" placeholder="cena"
+								value="${patient.lastName}">
 						</div>
 
 						<div class="col-md-12">
-							<label class="col-form-label spti-label">PhoneNumber</label> <input
-								type="text" name="phoneNumber" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label">PhoneNumber</label> <span
+								class="mandatory-sign">*</span> <input type="text"
+								name="phoneNumber" class="col-md-12 spti-inpt"
 								placeholder="e.g 9090981981" value="${patient.phoneNumber}">
 						</div>
 
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Gender</label> <select
+							<label class="col-form-label spti-label">Gender</label> <span
+								class="mandatory-sign">*</span> <select
 								name="gender" class="col-md-12 spti-inpt">
 								<c:choose>
 									<c:when test="${patient.gender == 'Male'}">
@@ -111,7 +132,7 @@
 								</c:choose>
 							</select>
 						</div>
-						
+
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Email</label> <input
 								type="text" name="email" class="col-md-12 spti-inpt"
@@ -135,6 +156,12 @@
 			</div>
 		</div>
 	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');

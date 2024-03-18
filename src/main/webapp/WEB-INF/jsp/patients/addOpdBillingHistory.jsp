@@ -20,6 +20,24 @@
 	crossorigin="anonymous">
 	
 </script>
+<style type="text/css">
+.error {
+	color: red;
+	font-size: 12px;
+}
+
+.error input {
+	border: 1px solid red;
+}
+
+.error select {
+	border: 1px solid red;
+}
+
+.error textarea {
+	border: 1px solid red;
+}
+</style>
 </head>
 
 <body>
@@ -39,32 +57,36 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<form class="login-form" action="/opds/updatePaidBill/${opdHistory.patient.id }" method="post">
+							<form class="login-form"  id="login-form" action="/opds/updatePaidBill/${opdHistory.patient.id }" method="post">
 							<input type="hidden" name="id" 	value="${opdHistory.id }">
 							
 							
 								<div class="row">
 	
 									<div class="col-md-6">
-										<label class="col-form-label spti-label">Bill</label> <input
+										<label class="col-form-label spti-label">Bill</label><span
+								class="mandatory-sign">*</span> <input
 											type="text" name="bill" class="col-md-12 spti-inpt" 
 											value="${opdHistory.bill }">
 									</div>
 
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Paid
-											Amount</label> <input type="text" name="paidBill"
+											Amount</label><span
+								class="mandatory-sign">*</span> <input type="text" name="paidBill"
 											class="col-md-12 spti-inpt" value="${opdHistory.paidBill }">
 									</div>
 									
 									<div class="col-md-4">
 										<label class="col-form-label spti-label">Pending
-											Amount</label> <input type="text" name="pendingAmount"
+											Amount</label><span
+								class="mandatory-sign">*</span> <input type="text" name="pendingAmount"
 											class="col-md-12 spti-inpt" value="${opdHistory.pendingAmount }">
 									</div>
 
 									<div class="col-md-4">
-										<label class="col-form-label spti-label">Status</label> <select
+										<label class="col-form-label spti-label">Status</label><span
+								class="mandatory-sign">*</span> <select
 											name="billStatus" class="col-md-12 spti-inpt">
 											<option disabled="disabled" selected>Select status</option>
 											<option value="Paid">Paid</option>
@@ -73,7 +95,8 @@
 									</div>
 									
 									<div class="col-md-4">
-										<label class="col-form-label spti-label">Payment Type</label> <select
+										<label class="col-form-label spti-label">Payment Type</label><span
+								class="mandatory-sign">*</span> <select
 											name="paymentType" class="col-md-12 spti-inpt">
 											<option disabled="disabled" selected>Select Payment Type</option>
 											<option value="Online">Online</option>
@@ -97,6 +120,11 @@
 			</div>
 		</div>
 	</div>
+	
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');

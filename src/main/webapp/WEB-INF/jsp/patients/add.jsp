@@ -11,15 +11,11 @@
 <!-- Import jquery cdn -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous">
-	
-</script>
+	crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-	crossorigin="anonymous">
-	
-</script>
+	crossorigin="anonymous"></script>
 <style>
 .popup {
 	display: none;
@@ -51,16 +47,36 @@
 	padding: 4px;
 	color: #757575;
 }
+
+.error {
+	color: red;
+	font-size: 12px;
+}
+
+.error input {
+	border: 1px solid red;
+}
+
+.error select {
+	border: 1px solid red;
+}
+
+.error textarea {
+	border: 1px solid red;
+}
 </style>
 </head>
 
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
+
+
 	<div class="height-90">
 		<div class="main-content  ">
 			<div class="modal-body">
 				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
-				<form class="login-form" action="/patients" method="post">
+				<form class="login-form" id="login-form" action="/patients"
+					method="post">
 					<div class="row">
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">First Name</label> <span
@@ -69,25 +85,27 @@
 						</div>
 
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
-								placeholder="cena">
+							<label class="col-form-label spti-label">Last Name</label> <span
+								class="mandatory-sign">*</span> <input type="text"
+								name="lastName" class="col-md-12 spti-inpt" placeholder="cena">
 						</div>
 
 						<div class="col-md-12">
-							<label class="col-form-label spti-label">PhoneNumber</label> <input
-								type="text" name="phoneNumber" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label">PhoneNumber</label> <span
+								class="mandatory-sign">*</span> <input type="text"
+								name="phoneNumber" class="col-md-12 spti-inpt"
 								placeholder="e.g 9090981981">
-						</div>
-						
-						<div class="col-md-4">
-							<label class="col-form-label spti-label">Age</label> <input
-								type="text" name="age" class="col-md-12 spti-inpt"
-								placeholder="e.g 12">
 						</div>
 
 						<div class="col-md-4">
-							<label class="col-form-label spti-label">Gender</label> <select
+							<label class="col-form-label spti-label">Age</label> <span
+								class="mandatory-sign">*</span> <input type="text" name="age"
+								class="col-md-12 spti-inpt" placeholder="e.g 12">
+						</div>
+
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">Gender</label> <span
+								class="mandatory-sign">*</span> <select
 								name="gender" class="col-md-12 spti-inpt">
 								<option value="">Select gender</option>
 								<option value="MALE">Male</option>
@@ -116,16 +134,23 @@
 							class="btn btn-secondary btn-sm cancel-btn float-end mx-1"
 							onclick="window.history.back()">Cancel</button>
 					</div>
+
 				</form>
 			</div>
 
 		</div>
 	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
 	<script type="text/javascript">
-		$(window).on('load', function() {
-			$('#addUserModel').modal('show');
-		});
-	</script>
+        $(window).on('load', function () {
+            $('#addUserModel').modal('show');
+        });
+    </script>
 </body>
 
 </html>
