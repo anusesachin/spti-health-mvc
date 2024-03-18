@@ -20,7 +20,9 @@
 	crossorigin="anonymous">
 	
 </script>
-<style>
+<style> 
+
+      
 .popup {
 	display: none;
 	width: 350px;
@@ -57,24 +59,32 @@
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="height-90">
-		<div class="main-content  ">
-			<div class="modal-body">
-				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
+		<div class="main-content ">
+			<div class="modal-body ">
+			                    <div class="col-md-4 offset-md-4">
+			
+				<h5 class="modal-title mt-3 " id="exampleModalLabel">Add Patient</h5>
+				</div>
 				<form class="login-form" action="/patients" method="post">
-					<div class="row">
-						<div class="col-md-6">
+					<div class="row  ">
+					<div class="col-md-1">
+					</div>
+						<div class="col-md-4 ">
 							<label class="col-form-label spti-label">First Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
 								name="firstName" class="col-md-12 spti-inpt" placeholder="riya">
 						</div>
-
-						<div class="col-md-6">
+						
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Last Name</label> <input
 								type="text" name="lastName" class="col-md-12 spti-inpt"
 								placeholder="cena">
 						</div>
-
-						<div class="col-md-12">
+						</div>
+                   <div class="row  ">
+                   <div class="col-md-1">
+                   </div>
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">PhoneNumber</label> <input
 								type="text" name="phoneNumber" class="col-md-12 spti-inpt"
 								placeholder="e.g 9090981981">
@@ -85,7 +95,10 @@
 								type="text" name="age" class="col-md-12 spti-inpt"
 								placeholder="e.g 12">
 						</div>
-
+					</div>
+					 <div class="row  ">
+                   <div class="col-md-1">
+                   </div>
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Gender</label> <select
 								name="gender" class="col-md-12 spti-inpt">
@@ -101,15 +114,20 @@
 								type="text" name="email" class="col-md-12 spti-inpt"
 								placeholder="riya@gmail.com">
 						</div>
-
-						<div class="col-md-12">
+						
+</div> 
+<div class="row  ">
+                   <div class="col-md-1">
+                   </div>
+              
+						<div class="col-md-8">
 							<label class="col-form-label spti-label">Address</label>
 							<textarea class="col-md-12 spti-textarea-height" name="address"
 								placeholder="eg.Hadpsar, pune"></textarea>
 						</div>
-
-					</div>
-					<div class="col-md-12" style="position: relative;">
+</div>
+					
+					<div class="col-md-9 " style="position: relative;">
 						<button type="submit"
 							class="btn btn-warning btn-sm add-btn float-end Spti-btn">Add</button>
 						<button type="button"
@@ -117,10 +135,10 @@
 							onclick="window.history.back()">Cancel</button>
 					</div>
 				</form>
+				
 			</div>
-
+</div>
 		</div>
-	</div>
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');
