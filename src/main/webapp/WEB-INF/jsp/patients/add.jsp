@@ -53,18 +53,34 @@
 	padding: 4px;
 	color: #757575;
 }
+
+    .border {
+   
+        padding: 5px 2px 53px 3px;
+         /* Top, Right, Bottom, Left */
+         margin-left: auto;
+        margin-right: auto;
+        max-width: 1000px;
+    }
 </style>
+
+
 </head>
 
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="height-90">
 		<div class="main-content ">
-			<div class="modal-body ">
+			<div class="modal-body "> 
+			<div class="border">
+			 <div class="text-center">
+			
 				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
+				</div>
+				 
 				<form class="login-form" action="/patients" method="post">
-					<div class="row  ">
-					<div class="col-md-1">
+					<div class="row mt-3  ">
+					<div class="col-md-2">
 					</div>
 						<div class="col-md-4 ">
 							<label class="col-form-label spti-label">First Name</label> <span
@@ -79,7 +95,7 @@
 						</div>
 						</div>
                    <div class="row  ">
-                   <div class="col-md-1">
+                   <div class="col-md-2">
                    </div>
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">PhoneNumber</label> <input
@@ -94,7 +110,7 @@
 						</div>
 					</div>
 					 <div class="row  ">
-                   <div class="col-md-1">
+                   <div class="col-md-2">
                    </div>
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Gender</label> <select
@@ -114,7 +130,7 @@
 						
 </div> 
 <div class="row  ">
-                   <div class="col-md-1">
+                   <div class="col-md-2">
                    </div>
               
 						<div class="col-md-8">
@@ -124,7 +140,7 @@
 						</div>
 </div>
 					
-					<div class="col-md-9 " style="position: relative;">
+					<div class="col-md-10 " style="position: relative;">
 						<button type="submit"
 							class="btn btn-warning btn-sm add-btn float-end Spti-btn">Add</button>
 						<button type="button"
@@ -132,7 +148,7 @@
 							onclick="window.history.back()">Cancel</button>
 					</div>
 				</form>
-				
+				</div>
 			</div>
 </div>
 		</div>
