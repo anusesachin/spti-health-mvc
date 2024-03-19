@@ -14,6 +14,9 @@
       overflow-y: auto; /* Enable vertical scrolling */
    
     }
+     #totalOPDBill, #totalOPDBillonline, #totalOPDBillcash  #pendingBill, #paidBill, #pendingBill{
+            font-size: smaller; /* Adjust the font size as needed */
+        }
     table {
       border-collapse: collapse;
       width: 100%;
@@ -68,8 +71,7 @@ font-size:25px;
 	<div class="height-200">
 				<!-- ============== -->
 		<div class="main-content  ">
-			<h5 class="modal-title" id="exampleModalLabel" >Dashboard</h5>
-			<hr>
+			
 			<div class="row">
 				<div class="col-9"></div>
 				<div class="col-3">
