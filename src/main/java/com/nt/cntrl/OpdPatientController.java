@@ -3,6 +3,7 @@ package com.nt.cntrl;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +57,7 @@ public class OpdPatientController {
 	
 
 	@PostMapping( "/history" )
-	public String addOpdHistory( @ModelAttribute PatientOPDHistoryRequestDTO dto, RedirectAttributes ra ) {
+	public String addOpdHistory(@Valid @ModelAttribute PatientOPDHistoryRequestDTO dto, RedirectAttributes ra ) {
 		
 		String result = opdPatientHistoryService.addOpdHistory( dto );
 		if ( result.equals( "OPD added Successfully" ) ) {
@@ -69,7 +70,7 @@ public class OpdPatientController {
 	}
 	
 	@PostMapping( "/updatePaidBill/{id}" )
-	public String updatePaidBill( @ModelAttribute PatientOPDHistoryRequestDTO dto, RedirectAttributes ra ,@PathVariable long id ) {
+	public String updatePaidBill(@Valid @ModelAttribute PatientOPDHistoryRequestDTO dto, RedirectAttributes ra ,@PathVariable long id ) {
 		
 		String result = opdPatientHistoryService.updatePaidBill( dto );
 		if ( result.equals( "OPD added Successfully" ) ) {

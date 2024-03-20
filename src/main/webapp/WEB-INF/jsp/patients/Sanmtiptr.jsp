@@ -51,6 +51,10 @@
 	padding: 4px;
 	color: #757575;
 }
+
+.error {
+            border: 1px solid red !important;
+        }
 </style>
 </head>
 
@@ -59,37 +63,44 @@
 	<div class="height-90">
 		<div class="main-content  ">
 			<div class="modal-body">
-				<h5 class="modal-title" id="exampleModalLabel">Patient SanmatiPatr</h5>
-				<form class="login-form" action="/samtiPatra/reportGenerate/${patient.id}" method="post">
-				<input type="hidden" name="patientId" value="${patient.id}">
+				<h5 class="modal-title" id="exampleModalLabel">Patient
+					SanmatiPatr</h5>
+				<form class="login-form" id="login-form"
+					action="/samtiPatra/reportGenerate/${patient.id}" method="post">
+					<input type="hidden" name="patientId" value="${patient.id}">
 					<div class="row">
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Patient Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
-								name="firstName" class="col-md-12 spti-inpt" value= "${patient.firstName}">
+								name="firstName" class="col-md-12 spti-inpt"
+								value="${patient.firstName}">
 						</div>
 
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label">Last Name</label> <span
+								class="mandatory-sign">*</span> <input type="text"
+								name="lastName" class="col-md-12 spti-inpt"
 								value="${patient.lastName}">
 						</div>
 
-						
+
 						<div class="col-md-6">
-									<label class="col-form-label spti-label">Responsible Person</label> <input
-									type="text" name="Responsible_Person" class="col-md-12 spti-inpt" placeholder="ex.ram anuse">
+							<label class="col-form-label spti-label">Responsible
+								Person</label> <span class="mandatory-sign">*</span><input type="text"
+								name="Responsible_Person" class="col-md-12 spti-inpt"
+								placeholder="ex.ram anuse">
 						</div>
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Age</label> <input
-							type="number" name="age" class="col-md-12 spti-inpt"value="${patient.age}">
+							<label class="col-form-label spti-label">Age</label> <span
+								class="mandatory-sign">*</span><input
+								type="number" name="age" class="col-md-12 spti-inpt"
+								value="${patient.age}">
 						</div>
-								
-								<div class="col-md-12">
-									<label class="col-form-label spti-label">Address</label>
-									<textarea class="col-md-12 spti-textarea-height" name="address"
-										>${patient.address}</textarea>
-								</div>
+
+						<div class="col-md-12">
+							<label class="col-form-label spti-label">Address</label>
+							<textarea class="col-md-12 spti-textarea-height" name="address">${patient.address}</textarea>
+						</div>
 
 					</div>
 					<div class="col-md-12" style="position: relative;">
@@ -104,6 +115,12 @@
 
 		</div>
 	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');
