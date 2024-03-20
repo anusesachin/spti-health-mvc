@@ -49,21 +49,8 @@
 }
 
 .error {
-	color: red;
-	font-size: 12px;
-}
-
-.error input {
-	border: 1px solid red;
-}
-
-.error select {
-	border: 1px solid red;
-}
-
-.error textarea {
-	border: 1px solid red;
-}
+            border: 1px solid red !important;
+        }
 </style>
 </head>
 
@@ -80,19 +67,19 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">First Name</label> <span
-								class="mandatory-sign">*</span> <input type="text"
+								class="mandatory-sign">*</span> <input type="text" id="tbName"
 								name="firstName" class="col-md-12 spti-inpt" placeholder="riya">
 						</div>
 
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Last Name</label> <span
-								class="mandatory-sign">*</span> <input type="text"
+								class="mandatory-sign">*</span> <input type="text" id="tbName"
 								name="lastName" class="col-md-12 spti-inpt" placeholder="cena">
 						</div>
 
 						<div class="col-md-12">
 							<label class="col-form-label spti-label">PhoneNumber</label> <span
-								class="mandatory-sign">*</span> <input type="text"
+								class="mandatory-sign">*</span> <input type="text" id="tbName"
 								name="phoneNumber" class="col-md-12 spti-inpt"
 								placeholder="e.g 9090981981">
 						</div>
@@ -129,7 +116,7 @@
 					</div>
 					<div class="col-md-12" style="position: relative;">
 						<button type="submit"
-							class="btn btn-warning btn-sm add-btn float-end Spti-btn">Add</button>
+							class="btn btn-warning btn-sm add-btn float-end Spti-btn" id="submit">Add</button>
 						<button type="button"
 							class="btn btn-secondary btn-sm cancel-btn float-end mx-1"
 							onclick="window.history.back()">Cancel</button>
@@ -151,6 +138,18 @@
             $('#addUserModel').modal('show');
         });
     </script>
+    
+  <!--   <script>
+$(document).ready(function() {
+    $('#tbName').on('input change', function() {
+        if($(this).val() != '') {
+            $('#submit').prop('disabled', false);
+        } else {
+            $('#submit').prop('disabled', true);
+        }
+    });
+});
+</script> -->
 </body>
 
 </html>

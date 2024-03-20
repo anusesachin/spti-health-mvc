@@ -53,21 +53,8 @@
 }
 
 .error {
-	color: red;
-	font-size: 12px;
-}
-
-.error input {
-	border: 1px solid red;
-}
-
-.error select {
-	border: 1px solid red;
-}
-
-.error textarea {
-	border: 1px solid red;
-}
+            border: 1px solid red !important;
+        }
 </style>
 </head>
 
