@@ -14,10 +14,23 @@
       overflow-y: auto; /* Enable vertical scrolling */
    
     }
+    
+    label {
+     
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 0px;
+   }
+  .mt-4{
+  margin-top: 0px;
+  }
+ 
     table {
       border-collapse: collapse;
       width: 100%;
-      border-radius: 8px; 
+      border-radius: 8px;
+      margin-bottom: 0px;
     }
 
     th, td {
@@ -50,6 +63,7 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0,0.3);
   
 }
+
 #exampleModalLabel
 {
 text-align:center;
@@ -59,6 +73,8 @@ font-size:25px;
 
 }
 }
+
+
 </style>	
 	
 </head>
@@ -68,8 +84,6 @@ font-size:25px;
 	<div class="height-200">
 				<!-- ============== -->
 		<div class="main-content  ">
-			<h5 class="modal-title" id="exampleModalLabel" >Dashboard</h5>
-			<hr>
 			<div class="row">
 				<div class="col-9"></div>
 				<div class="col-3">
@@ -119,7 +133,11 @@ font-size:25px;
         </div>
     </div>
 </div>
-<div id="tableContainer" style="overflow: auto" class="mt-4"></div>			
+<div class="row">
+	    <div class="col-4"><label class ="label-small"> Patient</label><div id="tableContainer1" style="overflow: auto" class="mt-4"></div>	</div>
+	    <div class="col-4"><label class ="label-small">Admit Patient</label> <div id="tableContainer2" style="overflow: auto" class="mt-4"></div>  </div>
+	    <div class="col-4"><label class ="label-small">Discharge</label><div id="tableContainer3" style="overflow: auto" class="mt-4"></div>  </div>
+</div>		
 </div>
  </div>
 </div>
@@ -204,14 +222,14 @@ font-size:25px;
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable"><thead><tr><th>Name</th><th>Phone Number</th><th>Preferred Doctor</th><th>Date Of OPD Treatment</th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
 
 				// Add data rows
 				for (var i = 0; i < data.length; i++) {
 				    tableHtml += '<tr>';
 				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
 				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				    tableHtml += '<td>' + data[i].seenByDoctor + '</td>';
+				   
 				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
 				    tableHtml += '<td>' + data[i].bill + '</td>';
 				    tableHtml += '<td>' + data[i].pendingAmount + '</td>';
@@ -226,7 +244,8 @@ font-size:25px;
 				tableHtml += '</tbody></table>';
 
 				// Display the table
-				$('#tableContainer').html(tableHtml);
+				$('#tableContainer1').html(tableHtml);
+				$('#tableContainer3').html(tableHtml);
 
 				// Apply the fixed position for the header
 				$('#patientTable thead th').css({
@@ -250,11 +269,68 @@ font-size:25px;
 			}
 		});
 		
+		//Dummy Code
+		
+				var todayrecord = "Today OpdPatient And Bill";
+		$.ajax({
+			type : 'GET',
+			url :"/opds/getCurrentdatePatient/"+todayrecord ,
+			success : function(data) {
+				
+				console.log(data);
+				
+				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+
+				// Add data rows
+				for (var i = 0; i < data.length; i++) {
+				    tableHtml += '<tr>';
+				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				    tableHtml += '<td>' + data[i].seenByDoctor + '</td>';
+				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
+				    tableHtml += '<td>' + data[i].billStatus + '</td>';
+				    // Add other fields as needed
+				    tableHtml += '</tr>';
+				    
+				}
+
+				// Close table body and table tag
+				tableHtml += '</tbody></table>';
+
+				// Display the table
+				$('#tableContainer2').html(tableHtml);
+
+				// Apply the fixed position for the header
+				$('#patientTable thead th').css({
+				    position: 'sticky',
+				    top: -1,
+				    background: '#f2f2f2', // Add background color if needed
+				    zIndex: 100
+				});
+
+				// Add the following CSS to ensure proper behavior
+				$('#patientTable').css({
+				    overflowY: 'auto',
+				    maxHeight: '400px' 
+				    // Set a max height if needed
+				});
+
+
+			},
+			error : function() {
+				// Handle errors here
+			}
+		});
+		
+		//Dummy CodeEnd
+		
 		
 		
 	}); 
 	
 	// END Ready
+	
+
 	
 	function getOPDpatientBill(todayrecord) {
 		$.ajax({
@@ -287,14 +363,13 @@ font-size:25px;
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable"><thead><tr><th>Name</th><th>Phone Number</th><th>Preferred Doctor</th><th>Date Of OPD Treatment</th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
 
 				// Add data rows
 				for (var i = 0; i < data.length; i++) {
 				    tableHtml += '<tr>';
 				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
 				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				    tableHtml += '<td>' + data[i].seenByDoctor + '</td>';
 				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
 				    tableHtml += '<td>' + data[i].bill + '</td>';
 				    tableHtml += '<td>' + data[i].pendingAmount + '</td>';
@@ -309,7 +384,7 @@ font-size:25px;
 				tableHtml += '</tbody></table>';
 
 				// Display the table
-				$('#tableContainer').html(tableHtml);
+				$('#tableContainer3').html(tableHtml);
 
 				// Apply the fixed position for the header
 				$('#patientTable thead th').css({
@@ -330,6 +405,9 @@ font-size:25px;
 				// Handle errors here
 			}
 		});
+		
+		
+		
 
 /* =====Online cash onChange OneDayGe====== */
 		$.ajax({
@@ -368,11 +446,10 @@ font-size:25px;
 			}
 		});
 		/* =========== */
-
-		
+	
     }
 
-	
+
 	</script>
 	
 </body>
