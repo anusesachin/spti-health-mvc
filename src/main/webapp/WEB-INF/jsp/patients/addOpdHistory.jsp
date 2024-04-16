@@ -59,11 +59,12 @@
 											type="text" name="diagnosis" class="col-md-12 spti-inpt"
 											placeholder="e.g Maleria">
 									</div>
+									
 									<div class="col-md-6">
-										<label class="col-form-label spti-label">Treatment</label> <input
-											type="text" name="treatment" class="col-md-12 spti-inpt"
-											placeholder="e.g IV">
-									</div>
+										<label class="col-form-label spti-label">Treatment</label> 
+										<textarea class="form-control" id="w3review" rows="1" name="treatment" placeholder="e.g IV"></textarea>									
+							         </div>
+							         
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Bill</label> <input
 											type="text" name="bill" class="col-md-12 spti-inpt"
@@ -93,6 +94,12 @@
 											<option value="Cash">Cash</option>
 										</select>
 									</div>
+									
+									  <div class="mb-3">
+                                        <label for="w3review" class="form-label col-form-label spti-label">Note</label>
+                                         <textarea class="form-control" id="w3review" rows="3" name="Note"></textarea>
+                                     </div>
+									
 
 								</div>
 								<div class="col-md-12">
