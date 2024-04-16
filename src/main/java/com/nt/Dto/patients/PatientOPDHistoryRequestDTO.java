@@ -24,6 +24,7 @@ public class PatientOPDHistoryRequestDTO {
 	private String pendingAmount;
 	private String Note;  
 
+	
 	private LocalDate treatmentDate;
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
 	private LocalDateTime dateOfTreatment;
