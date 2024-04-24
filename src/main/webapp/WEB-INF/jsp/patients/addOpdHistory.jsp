@@ -20,6 +20,11 @@
 	crossorigin="anonymous">
 	
 </script>
+ <style>
+        .col-md-5 {
+            margin-left: 140px;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,11 +64,15 @@
 											type="text" name="diagnosis" class="col-md-12 spti-inpt"
 											placeholder="e.g Maleria">
 									</div>
+									<div class="mb-3">
+                                        <label for="w3review" class="form-label col-form-label spti-label">Treatment</label>
+                                         <textarea class="form-control" id="w3review" rows="3" name="treatment"></textarea>
+                                     </div>
 									
-									<div class="col-md-6">
+									<!-- <div class="col-md-6">
 										<label class="col-form-label spti-label">Treatment</label> 
 										<textarea class="form-control" id="w3review" rows="1" name="treatment" placeholder="e.g IV"></textarea>									
-							         </div>
+							         </div> -->
 							         
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Bill</label> <input
@@ -86,7 +95,7 @@
 										</select>
 									</div>
 									
-									<div class="col-md-4">
+									<div class="col-md-5">
 										<label class="col-form-label spti-label">Payment Type</label> <select
 											name="paymentType" class="col-md-12 spti-inpt">
 											<option disabled="disabled" selected>Select Payment Type</option>
