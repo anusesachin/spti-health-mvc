@@ -1,5 +1,7 @@
 package com.nt.cntrl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nt.Dto.patients.AdmitPatientPageDto;
 import com.nt.Dto.patients.AdmitPatientRequestDto;
+import com.nt.Dto.patients.AdmitPatientResponseDto;
+import com.nt.Dto.patients.PatientOPDHistoryResponseDto;
 import com.nt.Dto.patients.PatientPageDto;
 import com.nt.Dto.patients.PatientRequestDto;
 import com.nt.Dto.patients.PatientResponseDto;
@@ -78,4 +83,24 @@ public class AdmitPatientController {
 
 	}
 
+	
+	@ResponseBody
+	@GetMapping("/getCurrentdateAdmitPatient/{todayrecord}")
+	public List<AdmitPatientResponseDto>  todayAdmitPatient( @PathVariable String todayrecord) {
+
+		List<AdmitPatientResponseDto> listofAdmitPatient = admitPatientService.todayAdmitPatient(todayrecord);
+		
+		return listofAdmitPatient;
+     }
+	
+
+	@ResponseBody
+	@GetMapping("/getCurrentdateDischargePatient/{todayrecord}")
+	public List<AdmitPatientResponseDto>   todayDischargePatient( @PathVariable String todayrecord) {
+		List<AdmitPatientResponseDto> listofAdmitPatient = admitPatientService. todayDischargePatient(todayrecord);
+		
+		return listofAdmitPatient;
+     }
+	
+	
 }

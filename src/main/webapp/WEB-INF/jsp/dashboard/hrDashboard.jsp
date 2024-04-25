@@ -134,9 +134,9 @@ font-size:25px;
     </div>
 </div>
 <div class="row">
-	    <div class="col-4"><label class ="label-small"> Patient</label><div id="tableContainer1" style="overflow: auto" class="mt-4"></div>	</div>
-	    <div class="col-4"><label class ="label-small">Admit Patient</label> <div id="tableContainer2" style="overflow: auto" class="mt-4"></div>  </div>
-	    <div class="col-4"><label class ="label-small">Discharge</label><div id="tableContainer3" style="overflow: auto" class="mt-4"></div>  </div>
+	    <div class="col-4"><label  id="OPD Patient" class ="label-small"></label><div id="tableContainer1" style="overflow: auto" class="mt-4"></div>	</div>
+	    <div class="col-4"><label  id="Admit Patient" class ="label-small"></label> <div id="tableContainer2" style="overflow: auto" class="mt-4"></div>  </div>
+	    <div class="col-4"><label id="discharge" class ="label-small"></label><div id="tableContainer3" style="overflow: auto" class="mt-4"></div>  </div>
 </div>		
 </div>
  </div>
@@ -213,6 +213,7 @@ font-size:25px;
 
 		/* =========== */
 		
+		// today  Data OPDPatient Data
 		
 		var todayrecord = "Today OpdPatient And Bill";
 		$.ajax({
@@ -222,30 +223,28 @@ font-size:25px;
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				 if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("OPD Patient").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
 
-				// Add data rows
-				for (var i = 0; i < data.length; i++) {
-				    tableHtml += '<tr>';
-				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
-				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				   
-				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
-				    tableHtml += '<td>' + data[i].bill + '</td>';
-				    tableHtml += '<td>' + data[i].pendingAmount + '</td>';
-				    tableHtml += '<td>' + data[i].paidBill + '</td>';
-				    tableHtml += '<td>' + data[i].billStatus + '</td>';
-				    // Add other fields as needed
-				    tableHtml += '</tr>';
-				    
-				}
-
+					  document.getElementById("OPD Patient").innerText = "OPD Patient";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				            tableHtml += '<tr>';
+				            tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				            tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				            // Add other fields as needed
+				            tableHtml += '</tr>';
+				        }
+				  }
 				// Close table body and table tag
 				tableHtml += '</tbody></table>';
 
 				// Display the table
 				$('#tableContainer1').html(tableHtml);
-				$('#tableContainer3').html(tableHtml);
+				//$('#tableContainer3').html(tableHtml);
 
 				// Apply the fixed position for the header
 				$('#patientTable thead th').css({
@@ -269,30 +268,31 @@ font-size:25px;
 			}
 		});
 		
-		//Dummy Code
+		// today  Data Admit_Patient Data
 		
-				var todayrecord = "Today OpdPatient And Bill";
 		$.ajax({
 			type : 'GET',
-			url :"/opds/getCurrentdatePatient/"+todayrecord ,
+		url :"/admits/getCurrentdateAdmitPatient/"+todayrecord ,
 			success : function(data) {
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				 if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("Admit Patient").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
 
-				// Add data rows
-				for (var i = 0; i < data.length; i++) {
-				    tableHtml += '<tr>';
-				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
-				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				    tableHtml += '<td>' + data[i].seenByDoctor + '</td>';
-				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
-				    tableHtml += '<td>' + data[i].billStatus + '</td>';
-				    // Add other fields as needed
-				    tableHtml += '</tr>';
-				    
-				}
+					  document.getElementById("Admit Patient").innerText = "Admit Patient";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				            tableHtml += '<tr>';
+				            tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				            tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				            // Add other fields as needed
+				            tableHtml += '</tr>';
+				        }
+				  }
 
 				// Close table body and table tag
 				tableHtml += '</tbody></table>';
@@ -322,13 +322,75 @@ font-size:25px;
 			}
 		});
 		
-		//Dummy CodeEnd
+		
+		// today  Discharge_Patient Data
+		
+		$.ajax({
+			
+		
+			type : 'GET',
+			url :"/admits/getCurrentdateDischargePatient/"+todayrecord ,
+			success : function(data) {
+				
+				console.log(data);
+				
+				if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("discharge").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
+
+					
+					  document.getElementById("discharge").innerText = "Discharge";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				    tableHtml += '<tr>';
+				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				    // Add other fields as needed
+				    tableHtml += '</tr>';
+					}
+				  }
+				
+				
+
+				// Add data rows
+				
+
+				// Close table body and table tag
+				tableHtml += '</tbody></table>';
+
+				// Display the table
+				$('#tableContainer3').html(tableHtml);
+
+				// Apply the fixed position for the header
+				$('#patientTable thead th').css({
+				    position: 'sticky',
+				    top: -1,
+				    background: '#f2f2f2', // Add background color if needed
+				    zIndex: 100
+				});
+
+				// Add the following CSS to ensure proper behavior
+				$('#patientTable').css({
+				    overflowY: 'auto',
+				    maxHeight: '400px' 
+				    // Set a max height if needed
+				});
+
+
+			},
+			error : function() {
+				// Handle errors here
+			}
+		});
 		
 		
 		
 	}); 
 	
-	// END Ready
+	
+	// END Ready ====
 	
 
 	
@@ -355,6 +417,7 @@ font-size:25px;
 			}
 		});
 		
+		// Weekly or Monthly  OPDPatient Data
 		
 		$.ajax({
 			type : 'GET',
@@ -363,22 +426,132 @@ font-size:25px;
 				
 				console.log(data);
 				
-				var tableHtml = '<table border="1" id="patientTable" style="width: 55%; font-size: 11px;"><thead><tr><th>Name</th><th>Phone Number</th><th>OPD Date </th><th>Total Bill</th><th>Pending Bill</th><th>Paid Bill</th><th>Bill Status</th></tr></thead><tbody>';
+				if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("OPD Patient").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
 
-				// Add data rows
-				for (var i = 0; i < data.length; i++) {
-				    tableHtml += '<tr>';
-				    tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
-				    tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
-				    tableHtml += '<td>' + data[i].dateOfTreatment + '</td>';
-				    tableHtml += '<td>' + data[i].bill + '</td>';
-				    tableHtml += '<td>' + data[i].pendingAmount + '</td>';
-				    tableHtml += '<td>' + data[i].paidBill + '</td>';
-				    tableHtml += '<td>' + data[i].billStatus + '</td>';
-				    // Add other fields as needed
-				    tableHtml += '</tr>';
-				    
-				}
+					  document.getElementById("OPD Patient").innerText = "OPD Patient";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				            tableHtml += '<tr>';
+				            tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				            tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				            // Add other fields as needed
+				            tableHtml += '</tr>';
+				        }
+				  }
+					  
+				// Close table body and table tag
+				tableHtml += '</tbody></table>';
+
+				// Display the table
+				$('#tableContainer1').html(tableHtml);
+
+				// Apply the fixed position for the header
+				$('#patientTable thead th').css({
+				    position: 'sticky',
+				    top: -1,
+				    background: '#f2f2f2', // Add background color if needed
+				    zIndex: 100
+				});
+
+				// Add the following CSS to ensure proper behavior
+				$('#patientTable').css({
+				    overflowY: 'auto',
+				    maxHeight: '400px' // Set a max height if needed
+				});
+
+			},
+			error : function() {
+				// Handle errors here
+			}
+
+		});
+		
+		// Weekly or Monthly  AdmitPatient Data
+		
+		$.ajax({
+			type : 'GET',
+			url :"/admits/getCurrentdateAdmitPatient/"+todayrecord ,
+			success : function(data) {
+				
+				console.log(data);
+				
+				if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("Admit Patient").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
+
+					  document.getElementById("Admit Patient").innerText = "Admit Patient";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				            tableHtml += '<tr>';
+				            tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				            tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				            // Add other fields as needed
+				            tableHtml += '</tr>';
+				        }
+				  }
+					  
+
+				// Close table body and table tag
+				tableHtml += '</tbody></table>';
+
+				// Display the table
+				$('#tableContainer2').html(tableHtml);
+
+				// Apply the fixed position for the header
+				$('#patientTable thead th').css({
+				    position: 'sticky',
+				    top: -1,
+				    background: '#f2f2f2', // Add background color if needed
+				    zIndex: 100
+				});
+
+				// Add the following CSS to ensure proper behavior
+				$('#patientTable').css({
+				    overflowY: 'auto',
+				    maxHeight: '400px' // Set a max height if needed
+				});
+
+			},
+			error : function() {
+				// Handle errors here
+			}
+	
+		});
+
+		
+		// Weekly or Monthly  DischargePatient Data
+		
+		$.ajax({
+			type : 'GET',
+			url :"/admits/getCurrentdateDischargePatient/"+todayrecord ,
+			success : function(data) {
+				
+				console.log(data);
+				
+				  if (data.length === 0) {
+					  tableHtml += '<tr><td colspan="2"></td></tr>';
+					  document.getElementById("discharge").innerText = "";
+				  }else {
+					  var tableHtml = '<table border="1" id="patientTable" style="width: 100%; font-size: 18px;"><thead><tr><th>Name</th><th>Phone Number</th></tr></thead><tbody>';
+
+					  document.getElementById("discharge").innerText = "Discharge";
+					  // Add data rows
+				        for (var i = 0; i < data.length; i++) {
+				            tableHtml += '<tr>';
+				            tableHtml += '<td>' + data[i].patient.firstName + ' ' + data[i].patient.lastName + '</td>';
+				            tableHtml += '<td>' + data[i].patient.phoneNumber + '</td>';
+				            // Add other fields as needed
+				            tableHtml += '</tr>';
+				        }
+				  }
+					  
+				  
 
 				// Close table body and table tag
 				tableHtml += '</tbody></table>';
@@ -404,6 +577,8 @@ font-size:25px;
 			error : function() {
 				// Handle errors here
 			}
+			
+
 		});
 		
 		
