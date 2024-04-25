@@ -219,6 +219,9 @@
 						<li><a href="/admits" class="nav_link"><i
 								class="fa-solid fa-hospital-user"></i> <span class="nav_name">All Admit
 									Patients</span> </a></li>
+									
+						<li><a href="/patients/reports" class="nav_link"><i
+					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">Reports</span> </a></li>
 
 					</ul>
 
