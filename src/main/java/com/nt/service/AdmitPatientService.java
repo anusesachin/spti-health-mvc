@@ -2,7 +2,6 @@ package com.nt.service;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import com.nt.Dto.patients.AdmitPatientPageDto;
 import com.nt.Dto.patients.AdmitPatientRequestDto;
 import com.nt.Dto.patients.AdmitPatientResponseDto;
@@ -25,5 +24,10 @@ public interface AdmitPatientService {
 	List<PatientResponseDto> findallPatient();
 
 	List<PatientResponseDto> getTodaysWeekMonthPatient(String todayrecord);
+
+	List<AdmitPatientResponseDto> todayAdmitPatient(String todayrecord);
+
+	List<AdmitPatientResponseDto> todayDischargePatient(String todayrecord);
+
 
 }
