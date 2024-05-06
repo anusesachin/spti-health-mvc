@@ -164,5 +164,12 @@ public class PatientController {
 
 		}
 	}
+	
+	@GetMapping("/reports")
+	public String report() {
+		
+			
+		return "patients/reports";
+	}
 
 }
