@@ -20,7 +20,24 @@
 	crossorigin="anonymous">
 	
 </script>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+
+
 <style>
+.error-label {
+	margin-top: -10px;
+}
+
+.col-form-label.spti-label {
+	font-size: 17px;
+	color: #333;
+}
+
+#exampleModalLabel {
+	margin-top: 0px;
+	font-size: 20px;
+}
+
 .popup {
 	display: none;
 	width: 350px;
@@ -51,6 +68,19 @@
 	padding: 4px;
 	color: #757575;
 }
+
+.error {
+	color: red;
+	font-size: 11px;
+	margin-bottom: 10px;
+	margin-top: 1px;
+	padding: 1px;
+}
+
+.adjust{
+margin-bottom: -3px;
+
+}
 </style>
 </head>
 
@@ -60,35 +90,38 @@
 		<div class="main-content  ">
 			<div class="modal-body">
 				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
-				<form class="login-form" action="/patients" method="post">
+				<form class="login-form" id="login-form" action="/patients"
+					method="post">
 					<div class="row">
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">First Name</label> <span
+							<label class="col-form-label spti-label" style= "margin-top: 9px;">First Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
-								name="firstName" class="col-md-12 spti-inpt" placeholder="riya">
+								name="firstName" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;"
+								 id="fname"
+								placeholder="riya">
 						</div>
 
 						<div class="col-md-6">
-							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label" style= "margin-top: 9px;">Last Name</label> <input
+								type="text" name="lastName" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;
 								placeholder="cena">
 						</div>
 
 						<div class="col-md-12">
-							<label class="col-form-label spti-label">PhoneNumber</label> <input
-								type="text" name="phoneNumber" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label" style= "margin-top: 10px;">PhoneNumber</label> <input
+								type="text" name="phoneNumber" class="col-md-12 spti-inpt"  style= "margin-bottom: -3px;
 								placeholder="e.g 9090981981">
 						</div>
-						
+
 						<div class="col-md-4">
-							<label class="col-form-label spti-label">Age</label> <input
-								type="text" name="age" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label" style= "margin-top: 10px;">Age</label> <input
+								type="text" name="age" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;
 								placeholder="e.g 12">
 						</div>
 
 						<div class="col-md-4">
-							<label class="col-form-label spti-label">Gender</label> <select
-								name="gender" class="col-md-12 spti-inpt">
+							<label class="col-form-label spti-label" style= "margin-top: 10px;">Gender</label> <select
+								name="gender" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;">
 								<option value="">Select gender</option>
 								<option value="MALE">Male</option>
 								<option value="FEMALE">Female</option>
@@ -97,14 +130,14 @@
 						</div>
 
 						<div class="col-md-4">
-							<label class="col-form-label spti-label">Email</label> <input
-								type="text" name="email" class="col-md-12 spti-inpt"
+							<label class="col-form-label spti-label" style= "margin-top: 10px;">Email</label> <input
+								type="text" name="email" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;"
 								placeholder="riya@gmail.com">
 						</div>
 
 						<div class="col-md-12">
-							<label class="col-form-label spti-label">Address</label>
-							<textarea class="col-md-12 spti-textarea-height" name="address"
+							<label class="col-form-label spti-label" style= "margin-top: 10px;">Address</label>
+							<textarea class="col-md-12 spti-textarea-height" name="address" style= "margin-bottom: -3px;"
 								placeholder="eg.Hadpsar, pune"></textarea>
 						</div>
 
@@ -121,11 +154,92 @@
 
 		</div>
 	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#login-form").validate({
+
+				rules : {
+					firstName : {
+						required : true,
+						minlength : 2
+					},
+					lastName : {
+						required : true,
+						minlength : 2
+					},
+					phoneNumber : {
+						required : true,
+						minlength : 10,
+						maxlength : 12,
+						digits : true
+					},
+					age : {
+						required : true,
+						min : 0.1,
+						number : true
+					},
+					gender : {
+						required : true
+					},
+					address : {
+						required : true,
+						minlength : 2
+					},
+					email : {
+						required : true,
+						email : true
+					}
+
+				},
+				messages : {
+					firstName : {
+						required : "Please enter correct first name",
+						minlength : "minimum two character"
+					},
+					lastName : {
+						required : "please enter correct last name",
+						minlength : "minimum two character"
+					},
+					phoneNumber : {
+						required : "please enter correct phonenumber",
+						digits : "please enter only digit",
+						minlength : "minimum 10 digit",
+						maxlength : "maximum 12 digit"
+					},
+					age : {
+						required : " please enter correct age",
+						min : " please enter correct age",
+						number : " please enter correct age",
+					},
+					gender : {
+						required : " please enter gender",
+					},
+					address : {
+						required : " please enter address"
+					},
+					email : {
+						required : " please enter email",
+						email : "please enter correct email please"
+					}
+
+				},
+
+			});
+		});
+	</script>
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');
 		});
 	</script>
+
+
 </body>
 
 </html>
