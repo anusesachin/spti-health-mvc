@@ -183,17 +183,15 @@ public class AdmitPatientServiceImpl implements AdmitPatientService {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
 		try {
-			ParameterizedTypeReference<List<AdmitPatientResponseDto>> responseType = new ParameterizedTypeReference<List<AdmitPatientResponseDto>>() {
-			};
-			ResponseEntity<List<AdmitPatientResponseDto>> res = template.exchange( url, HttpMethod.GET, entity, responseType );
-
-
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
-
-		return null;
+	        ResponseEntity<List<AdmitPatientResponseDto>> res = template.exchange(url, HttpMethod.GET, entity,
+	                new ParameterizedTypeReference<List<AdmitPatientResponseDto>>() {});
+	        return res.getBody();
+	    } catch (RestClientException e) {
+	        
+	        return Collections.emptyList();
+	    }
 	}
+	
 
 	@Override
 	public List<AdmitPatientResponseDto> todayDischargePatient(String todayrecord) {
@@ -202,15 +200,12 @@ public class AdmitPatientServiceImpl implements AdmitPatientService {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
 		try {
-			ParameterizedTypeReference<List<AdmitPatientResponseDto>> responseType = new ParameterizedTypeReference<List<AdmitPatientResponseDto>>() {
-			};
-			ResponseEntity<List<AdmitPatientResponseDto>> res = template.exchange( url, HttpMethod.GET, entity, responseType );
-			return res.getBody();
-
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
-
-		return null;
+	        ResponseEntity<List<AdmitPatientResponseDto>> res = template.exchange(url, HttpMethod.GET, entity,
+	                new ParameterizedTypeReference<List<AdmitPatientResponseDto>>() {});
+	        return res.getBody();
+	    } catch (RestClientException e) {
+	        
+	        return Collections.emptyList();
+	    }
 	}
 }
