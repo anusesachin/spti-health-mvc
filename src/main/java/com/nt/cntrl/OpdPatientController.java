@@ -34,7 +34,25 @@ public class OpdPatientController {
 
 	@Autowired
 	private OpdPatientHistoryService opdPatientHistoryService;
+	
 
+	
+	@GetMapping("/historyPatientDetails-form/{id}")
+	public String historyPatientDetails(@PathVariable Long id, Model model) {
+		List<PatientOPDHistoryResponseDto> patient = opdPatientHistoryService.getHistoryPatientDetailspatientId( id );
+		model.addAttribute( "PatientOPDHistory", patient );
+		return "patients/historyPatientDetails" ;
+				
+	}
+
+	@GetMapping("/historyPatient-from/patients/{id}")
+	public String historyPatient(@PathVariable Long id, Model model) {
+		List<PatientOPDHistoryResponseDto> patient = opdPatientHistoryService.getHistoryPatientpatientId( id );
+		model.addAttribute( "PatientOPDHistory", patient );
+		return "patients/historyPatient";
+	}
+	
+	
 	@GetMapping( "/history-form/patients/{id}" )
 	public String addOpdHistoryForm( @PathVariable Long id, Model model ) {
 		PatientResponseDto patient = patientService.getPatientById( id );
