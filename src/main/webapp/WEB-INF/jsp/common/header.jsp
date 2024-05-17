@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,8 @@
 <link href="${pageContext.request.contextPath}/css/table.css"
 	rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/js/validation.js"></script>
+
 <style type="text/css">
 #toast-container>.toast-success {
 	background-color: green !important;

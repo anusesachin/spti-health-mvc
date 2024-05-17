@@ -21,6 +21,15 @@
 	
 </script>
 <style>
+
+
+
+.col-form-label.spti-label {
+	font-size: 16px;
+	color: #333;
+	margin-top: 16px;
+	
+}
 .popup {
 	display: none;
 	width: 350px;
@@ -51,6 +60,19 @@
 	padding: 4px;
 	color: #757575;
 }
+.error {
+	color: red;
+	font-size: 11px;
+	margin-bottom: 0px;
+	margin-top: 1px;
+	padding: 1px;
+}
+
+.col-md-12{
+color:black ;
+
+}
+
 </style>
 </head>
 
@@ -59,42 +81,42 @@
 	<div class="height-90">
 		<div class="main-content  ">
 			<div class="modal-body">
-				<h5 class="modal-title" id="exampleModalLabel">Admit Patient</h5>
-				<form class="login-form" action="/admits" method="post">
+				<h5 class="modal-title" id="exampleModalLabel" style= "margin-bottom: 6px;" >Admit Patient</h5>
+				<form class="login-form" id="login-form" action="/admits" method="post">
 				<input type="hidden" name="patientId" value="${patient.id}">
 					<div class="row">
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Patient Name</label> <span
-								class="mandatory-sign">*</span> <input type="text"
+								class="mandatory-sign">*</span> <input type="text" style= "margin-bottom: 0px;"
 								name="firstName" class="col-md-12 spti-inpt" value= "${patient.firstName}">
 						</div>
 
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
+								type="text" name="lastName" class="col-md-12 spti-inpt" style= "margin-bottom:0px;"
 								value="${patient.lastName}">
 						</div>
 
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Mobile Number</label>
-							<input type="text" name="phoneNumber" class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
+							<input type="text" name="phoneNumber" class="col-md-12 spti-inpt"  style= "margin-bottom:0px;"value="${ patient.phoneNumber}">
 						</div>
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Email</label>
-							<input type="text" name="email" class="col-md-12 spti-inpt"	value="${patient.email}">
+							<input type="text" name="email" class="col-md-12 spti-inpt" style= "margin-bottom:0px;"	value="${patient.email}">
 						</div>
 						
 						
 						
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Age</label> <input
-								type="number" name="age" class="col-md-12 spti-inpt"
+								type="number" name="age" class="col-md-12 spti-inpt" style= "margin-bottom:0px;"
 								value="${patient.age}">
 						</div>
 
 						<div class="col-md-6">
 							<label class="col-form-label spti-label">Gender</label> <select
-								name="gender" class="col-md-12 spti-inpt">
+								name="gender" class="col-md-12 spti-inpt" style= "margin-bottom:0px;">
 								<c:choose>
 									<c:when test="${patient.gender == 'MALE'}">
 										<option value="Male" selected>Male</option>
@@ -124,11 +146,11 @@
 						
                           <div class="col-md-6">
 								<label class="col-form-label spti-label">Admission Date</label>
-    							<input type="datetime-local" name="admissionDate" class="col-md-12 spti-inpt">
+    							<input type="datetime-local" name="admissionDate" class="col-md-12 spti-inpt" style= "margin-bottom:0px;">
 						  </div>
 						  <div class="col-md-6">
 							<label class="col-form-label spti-label">Status</label>
-							<select name="admitDischargeStatus" class="col-md-12 spti-inpt">
+							<select name="admitDischargeStatus" class="col-md-12 spti-inpt" style= "margin-bottom:0px;">
 								<option value="">Select Status</option>
 								<option value="Admit">Admit</option>
 								<option value="Discharge">Discharge</option>
@@ -136,7 +158,7 @@
 						  </div>
 						  <div class="col-md-12">
 							<label class="col-form-label spti-label">Address</label>
-							<textarea class="col-md-12 spti-textarea-height" name="address">${patient.address}</textarea>
+							<textarea class="col-md-12 spti-textarea-height" name="address" style= "margin-bottom:0px;">${patient.address}</textarea>
 						  </div>
 					  </div>
 					<div class="col-md-12" style="position: relative;">
@@ -151,6 +173,12 @@
 
 		</div>
 	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+	
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');

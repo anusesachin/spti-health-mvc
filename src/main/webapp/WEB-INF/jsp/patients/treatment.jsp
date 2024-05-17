@@ -244,5 +244,70 @@
 		}
 
 	</script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#treatmentTable").validate({
+
+				rules : {
+					medicineName : {
+						required : true,
+						minlength : 2
+					},
+					lastName : {
+						required : true,
+						minlength : 2
+					},
+					Responsible_Person : {
+						required : true,
+						minlength : 2
+					},
+					age : {
+						required : true,
+						min : 0.1,
+						number : true
+					},
+					
+					address : {
+						required : true,
+						minlength : 2
+					}
+					
+
+				},
+				messages : {
+					medicineName : {
+						required : "Please enter correct medicineName",
+						
+					},
+					lastName : {
+						required : "please enter correct last name",
+						minlength : "minimum two character"
+					},
+					Responsible_Person: {
+						required : "please enter responsible person",
+						minlength : "minimum two character"
+					},
+					
+					age : {
+						required : " please enter correct age",
+						min : " please enter correct age",
+						number : " please enter correct age",
+					},
+					
+					address : {
+						required : " please enter address"
+					},
+					
+
+				},
+
+			});
+		});
+	</script>
 </body>
 </html>

@@ -3,6 +3,8 @@ package com.nt.cntrl;
 import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -44,7 +46,7 @@ public class AdmitPatientController {
 	}
 
 	@PostMapping
-	public String addAdmitPatientdetails(@ModelAttribute AdmitPatientRequestDto dto, Model model, HttpSession session,
+	public String addAdmitPatientdetails( @Valid @ModelAttribute AdmitPatientRequestDto dto, Model model, HttpSession session,
 			RedirectAttributes ra) {
 		String user = (String) session.getAttribute("username");
 
