@@ -3,6 +3,7 @@ package com.nt.cntrl;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class PatientController {
 	}
     
 	@PostMapping
-	public String addPatient( @ModelAttribute PatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra ) {
+	public String addPatient(   @Valid @ModelAttribute PatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra ) {
 
 		String user = ( String ) session.getAttribute( "username" );
 

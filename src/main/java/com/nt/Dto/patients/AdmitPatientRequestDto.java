@@ -2,6 +2,11 @@ package com.nt.Dto.patients;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -16,12 +21,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdmitPatientRequestDto {
-	
-	private long id;
-	private String admitDischargeStatus;
-	private Long patientId;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime admissionDate;
+    
+    @Positive(message = "ID must be a positive number")
+    private long id;
 
+    @NotBlank(message = "Admit/Discharge status is mandatory")
+    private String admitDischargeStatus;
+
+    @NotNull(message = "Patient ID cannot be null")
+    @Positive(message = "Patient ID must be a positive number")
+    private Long patientId;
+
+    @NotNull(message = "Admission date cannot be null")
+    @FutureOrPresent(message = "Admission date must be in the present or future")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime admissionDate;
 }

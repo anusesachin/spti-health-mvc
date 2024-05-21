@@ -21,6 +21,20 @@
 	
 </script>
 <style>
+
+.col-form-label.spti-label {
+	font-size: 16px;
+	color: #333;
+	margin-top:12px;
+}
+
+.error {
+	color: red;
+	font-size: 11px;
+	margin-bottom: 0px;
+	margin-top: 1px;
+	padding: 1px;
+}
 .popup {
 	display: none;
 	width: 350px;
@@ -45,6 +59,10 @@
 	margin: 5px 0px;
 	border: 1px solid lightgray;
 }
+.col-md-12{
+color:black ;
+
+}
 
 .popup input[type="datetime-local"] {
 	font-size: 11px;
@@ -59,39 +77,39 @@
 	<div class="height-90">
 		<div class="main-content  ">
 			<div class="modal-body">
-				<h5 class="modal-title" id="exampleModalLabel">Discharge Patient</h5>
-				<form class="login-form" action="/discharge" method="post">
+				<h5 class="modal-title" id="exampleModalLabel" style= "margin-bottom: 6px;">Discharge Patient</h5>
+				<form class="login-form" id="login-form" action="/discharge" method="post">
 				<input type="hidden" name="patientId" value="${patient.id}">
 				<input type="hidden" name="admitPatientId" value="${admitPatientResponseDto.id}">
 				<div class="row">
 					<div class="col-md-4">
 						<label class="col-form-label spti-label">MLC NO.</label>
-						<input type="text"name="MLC_No" class="col-md-12 spti-inpt" placeholder="eg. 01 ">
+						<input type="text"name="MLC_No" class="col-md-12 spti-inpt"  style= "margin-bottom: -1px;"placeholder="eg. 01 ">
 					</div>
 					<div class="col-md-4">
 						<label class="col-form-label spti-label">IPD NO.</label>
-						<input type="text"name="IPD_No" class="col-md-12 spti-inpt" placeholder="eg. 01 ">
+						<input type="text"name="IPD_No" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;" placeholder="eg. 01 ">
 					</div>	
 					<div class="col-md-4">
 							<label class="col-form-label spti-label">Patient Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
-								name="firstName" class="col-md-12 spti-inpt" value= "${patient.firstName}">
+								name="firstName" style= "margin-bottom: -1px;" class="col-md-12 spti-inpt" value= "${patient.firstName}">
 						</div>			
 				</div>
 					<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt"
+								type="text" name="lastName" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;"
 								value="${patient.lastName}">
 						</div>
 
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Mobile Number</label>
-							<input type="text" name="phoneNumber" class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
+							<input type="text" name="phoneNumber" style= "margin-bottom: -1px;" class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
 						</div>
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Gender</label> <select
-								name="gender" class="col-md-12 spti-inpt">
+								name="gender" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;">
 								<c:choose>
 									<c:when test="${patient.gender == 'MALE'}">
 										<option value="Male" selected>Male</option>
@@ -121,13 +139,13 @@
 						<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Age</label> <input
-								type="number" name="age" class="col-md-12 spti-inpt"
+								type="number" name="age" class="col-md-12 spti-inpt"  style= "margin-bottom: -1px;" style= "margin-bottom: 17px;"
 								value="${patient.age}">
 						</div>
 
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Status</label> <select
-								name="admitDischargeStatus" class="col-md-12 spti-inpt">
+								name="admitDischargeStatus" class="col-md-12 spti-inpt" >
 								<c:choose>
 									<c:when test="${admitPatientResponseDto.admitDischargeStatus == 'Admit'}">
 										<option value="Admit" selected>Admit</option>
@@ -149,24 +167,24 @@
 						
 		                          <div class="col-md-4">
 												<label class="col-form-label spti-label">Admission Date And Time</label>
-		    									<input type="datetime-local" name="admissionDate" class="col-md-12 spti-inpt" value="${admitPatientResponseDto.admissionDate}">
+		    									<input type="datetime-local" style= "margin-bottom: -1px;" name="admissionDate" class="col-md-12 spti-inpt" value="${admitPatientResponseDto.admissionDate}">
 		
 								</div>
 								</div>
 								<div class="row">
 								<div class="col-md-4">
 										<label class="col-form-label spti-label">Discharge Date And Time</label>
-				    					<input type="datetime-local" name="dischargeDate" class="col-md-12 spti-inpt">
+				    					<input type="datetime-local" name="dischargeDate"  style= "margin-bottom: -1px;" style= "margin-bottom: 17px;" class="col-md-12 spti-inpt">
 								</div>
 								
 								  <div class="col-md-4">
 												<label class="col-form-label spti-label">Consultatnt</label>
-		    									<input type="text" name="consultatnt" class="col-md-12 spti-inpt">
+		    									<input type="text" name="consultatnt"  style= "margin-bottom: -1px;" class="col-md-12 spti-inpt">
 		
 								</div>
 								<div class="col-md-4">
 										<label class="col-form-label spti-label">Diagnosis</label>
-				    					<input type="text" name="diagnosis" class="col-md-12 spti-inpt">
+				    					<input type="text" name="diagnosis"  style= "margin-bottom: -1px;" class="col-md-12 spti-inpt">
 								</div>
 								</div>
 		
@@ -178,17 +196,17 @@
 									<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Address</label>
-							<textarea class="col-md-12 spti-textarea-height" name="address"
+							<textarea class="col-md-12 spti-textarea-height" style= "margin-bottom: -1px;"  name="address" style= "margin-bottom: 17px;"
 								>${patient.address}</textarea>
 						</div>
 						<div class="col-md-4">
 												<label class="col-form-label spti-label">Amount Paid</label>
-		    									<input type="text" name="amountPaid" value="${amountPaid}" class="col-md-12 spti-inpt">
+		    									<input type="text" name="amountPaid"  style= "margin-bottom: -1px;" value="${amountPaid}" class="col-md-12 spti-inpt">
 		
 								</div>
 						<div class="col-md-4">
 												<label class="col-form-label spti-label">Amount to be Paid</label>
-		    									<input type="text" name="amounttobePaid" value="${amounttobePaid}" class="col-md-12 spti-inpt">
+		    									<input type="text" name="amounttobePaid"  style= "margin-bottom: -1px;" value="${amounttobePaid}" class="col-md-12 spti-inpt">
 		
 								</div></div>
 								<div class="row">
@@ -252,6 +270,13 @@
 
 		</div>
 	</div>
+	
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+	
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');

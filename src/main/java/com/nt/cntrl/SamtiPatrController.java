@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,7 +57,7 @@ public class SamtiPatrController {
 	
 	
 	@PostMapping( "/reportGenerate/{id}" )
-	public void generatePdf(@PathVariable Long id ,@ModelAttribute SanmtiPatr sanmtiPatr, HttpServletResponse response, HttpSession session ) throws DocumentException, IOException {
+	public void generatePdf( @Valid @PathVariable Long id ,@ModelAttribute SanmtiPatr sanmtiPatr, HttpServletResponse response, HttpSession session ) throws DocumentException, IOException {
 		
 		PatientResponseDto patient = patientService.getPatientById( id );
 

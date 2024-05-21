@@ -23,7 +23,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 
 
+
 <style>
+
+
 .error-label {
 	margin-top: -10px;
 }
@@ -72,13 +75,18 @@
 .error {
 	color: red;
 	font-size: 11px;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	margin-top: 1px;
 	padding: 1px;
 }
 
 .adjust{
 margin-bottom: -3px;
+
+}
+
+.col-md-12{
+color:black ;
 
 }
 </style>
@@ -108,7 +116,7 @@ margin-bottom: -3px;
 						</div>
 
 						<div class="col-md-12">
-							<label class="col-form-label spti-label" style= "margin-top: 10px;">PhoneNumber</label> <input
+							<label class="col-form-label spti-label" style= "margin-top: 9px;">PhoneNumber</label> <input
 								type="text" name="phoneNumber" class="col-md-12 spti-inpt"  style= "margin-bottom: -3px;
 								placeholder="e.g 9090981981">
 						</div>
@@ -160,79 +168,7 @@ margin-bottom: -3px;
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#login-form").validate({
-
-				rules : {
-					firstName : {
-						required : true,
-						minlength : 2
-					},
-					lastName : {
-						required : true,
-						minlength : 2
-					},
-					phoneNumber : {
-						required : true,
-						minlength : 10,
-						maxlength : 12,
-						digits : true
-					},
-					age : {
-						required : true,
-						min : 0.1,
-						number : true
-					},
-					gender : {
-						required : true
-					},
-					address : {
-						required : true,
-						minlength : 2
-					},
-					email : {
-						required : true,
-						email : true
-					}
-
-				},
-				messages : {
-					firstName : {
-						required : "Please enter correct first name",
-						minlength : "minimum two character"
-					},
-					lastName : {
-						required : "please enter correct last name",
-						minlength : "minimum two character"
-					},
-					phoneNumber : {
-						required : "please enter correct phonenumber",
-						digits : "please enter only digit",
-						minlength : "minimum 10 digit",
-						maxlength : "maximum 12 digit"
-					},
-					age : {
-						required : " please enter correct age",
-						min : " please enter correct age",
-						number : " please enter correct age",
-					},
-					gender : {
-						required : " please enter gender",
-					},
-					address : {
-						required : " please enter address"
-					},
-					email : {
-						required : " please enter email",
-						email : "please enter correct email please"
-					}
-
-				},
-
-			});
-		});
-	</script>
+	
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');

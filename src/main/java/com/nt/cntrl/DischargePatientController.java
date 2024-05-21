@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,7 +69,7 @@ public class DischargePatientController {
 	}
 	
 	@PostMapping
-	public String dischargePatient(@ModelAttribute DischargePatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra) {
+	public String dischargePatient( @Valid @ModelAttribute DischargePatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra) {
 			
 		dischargePatientService.dischargePatient( dto );
 			

@@ -3,6 +3,7 @@ package com.nt.cntrl;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +62,7 @@ public class OpdPatientController {
 	}
 	
 	@GetMapping( "/billingHistory-form/patients/{id}" )
-	public String addOpdBillingHistoryForm( @PathVariable Long id, Model model ) {
+	public String addOpdBillingHistoryForm(  @Valid @PathVariable Long id, Model model ) {
 //		PatientResponseDto patient = patientService.getPatientById( id );
 //		model.addAttribute( "patient", patient );
 		
