@@ -5,6 +5,7 @@ import java.util.List;
 import com.nt.Dto.patients.OpdPatienPageDto;
 import com.nt.Dto.patients.PatientOPDHistoryRequestDTO;
 import com.nt.Dto.patients.PatientOPDHistoryResponseDto;
+import com.nt.Dto.patients.PatientResponseDto;
 
 public interface OpdPatientHistoryService {
 	public List<PatientOPDHistoryResponseDto> getPatientOpdHistory( Long patientId );
@@ -22,6 +23,12 @@ public interface OpdPatientHistoryService {
 	PatientOPDHistoryResponseDto opdPatienBillCasheDashbord(String todayrecord);
 
 	public String updatePaidBill(PatientOPDHistoryRequestDTO dto);
+
+
+	public List<PatientOPDHistoryResponseDto> getHistoryPatientpatientId(Long id);
+
+	public List<PatientOPDHistoryResponseDto> getHistoryPatientDetailspatientId(Long id);
+
 
 
 	

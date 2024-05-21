@@ -46,78 +46,48 @@ li {
 				<h5 class="modal-title" id="exampleModalLabel">Patients
 					Overview</h5>
 				<hr>
+				
 				<div class="row">
-					<div class="col-md-12 PatientsOverview">
+					<div class="col-md-12 ">
+
 						<div class="card">
-							<a class="btn btn-sm Spti-btn mt-5" href="/patients/admit-form/${patientList.id }">Admit</a>				
-							<c:choose>
-								<c:when test="${patientList == null}">
-									<div class="card-body">
-									<a class="btn btn-sm Spti-btn" href="/opds/history-form/patients/${patientSingleData.id }">Add OPD</a>
-										<div class="row">
-											<div class="col-md-2">
-												<img src="https://picsum.photos/200/300"
-													class="img-thumbnail" alt="...">
-											</div>
-											<div class="col-md-10">
-												<div class="border-bottom pb-2 my-2">
-													<h2>${patientSingleData.firstName}
-														${patientSingleData.lastName}</h2>
-													<p class="m-0 p-0">${patientSingleData.address}</p>
-												</div>
-
-												<div class="row">
-													<div class="col-md-4">
-														<label class="spti-label">Phone Number:</label>
-														<p>${patientSingleData.phoneNumber}</p>
-													</div>
-
-													<div class="col-md-4">
-														<label class="spti-label">Phone Email:</label>
-														<p>${patientSingleData.email}</p>
-													</div>
-												</div>
-
-											</div>
-										</div>
+							<div class="card-body">
+							
+								<div class="row">
+									<div class="col-md-2">
+										<img src="https://picsum.photos/200/300" class="img-thumbnail"
+											alt="...">
 									</div>
-								</c:when>
-								<c:otherwise>
-									<div class="card-body">
-										<a class="btn btn-sm Spti-btn"
-											href="/opds/history-form/patients/${patientList.id }">Add
-											OPD</a>
-										<div class="row">
-											<div class="col-md-2">
-												<img src="https://picsum.photos/200/300"
-													class="img-thumbnail" alt="...">
-											</div>
-											<div class="col-md-10">
+									<div class="col-md-10">
+										<div class="row PatientsOverview1">
+											<div class="col-md-6">
 												<div class="border-bottom pb-2 my-2">
-													<h2>${patientList.firstName}${patientList.lastName}</h2>
-													<p class="m-0 p-0">${patientList.address}</p>
+												<h2>${patientList.firstName} ${patientList.lastName}</h2>
+												<p class="m-0 p-0">${patientList.address}</p>
 												</div>
-
-												<div class="row">
-													<div class="col-md-4">
-														<label class="spti-label">Phone Number:</label>
-														<p>${patientList.phoneNumber}</p>
-													</div>
-
-													<div class="col-md-4">
-														<label class="spti-label">Phone Email:</label>
-														<p>${patientList.email}</p>
-													</div>
-
-
-												</div>
-
-											</div>
+											 </div>
+											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/patients/admit-form/${patientList.id }">Admit</a></div>
+											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/opds/history-form/patients/${patientList.id }">Add OPD</a></div>
+											 <div class="col-md-2"><a class="btn btn-sm Spti-btn" href="/opds/historyPatient-from/patients/${patientList.id }">History</a></div>
 										</div>
-									</div>
-								</c:otherwise>
-							</c:choose>
 
+										<div class="row">
+											<div class="col-md-4">
+												<label class="spti-label">Phone Number:</label>
+												<p>${patientList.phoneNumber}</p>
+											</div>
+
+											<div class="col-md-4">
+												<label class="spti-label">Phone Email:</label>
+												<p>${patientList.email}</p>
+											</div>
+
+
+										</div>
+
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
