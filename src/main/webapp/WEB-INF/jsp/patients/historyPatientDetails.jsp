@@ -75,8 +75,8 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label col-form-label fs-6">Treatment</label>
-											<textarea class="form-control" id="w3review" rows="3"
-												name="treatment" value="${patientOPDHistory.treatment}"></textarea>
+											<textarea class="form-control"  id="w3review" rows="3"
+												name="treatment">${patientOPDHistory.treatment}</textarea>
 										</div>
 
 
