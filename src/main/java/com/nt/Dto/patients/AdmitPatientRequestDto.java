@@ -22,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AdmitPatientRequestDto {
     
-    @Positive(message = "ID must be a positive number")
+   // @Positive(message = "ID must be a positive number")
     private long id;
 
     @NotBlank(message = "Admit/Discharge status is mandatory")
@@ -33,7 +33,7 @@ public class AdmitPatientRequestDto {
     private Long patientId;
 
     @NotNull(message = "Admission date cannot be null")
-    @FutureOrPresent(message = "Admission date must be in the present or future")
+   
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime admissionDate;
 }
