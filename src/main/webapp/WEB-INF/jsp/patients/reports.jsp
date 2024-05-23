@@ -30,6 +30,11 @@
 .col-md-3 {
 	width: 50%;
 }
+line-height
+:
+ 
+1
+;
 </style>
 
 </head>
@@ -44,36 +49,76 @@
 		</div>
 
 		<div class="row">
-			<div class="col-12 col-md-9"></div>
-			<div class="col-12 col-md-3">
-				<select id="reportType" class="form-select" id="patientTable"
-					aria-label="Default select example">
+			<div class="col-12 col-md-3 d-flex align-items-center">
+				<select id="reportType" class="form-select"
+					aria-label="Default select example" style="margin-bottom: 0;">
 					<option value="" disabled selected>Please Select An Option</option>
 					<option value="Today Patient">Today Patient</option>
 					<option value="Weekly Patient">Weekly Patient</option>
 					<option value="Monthly Patient">Monthly Patient</option>
-                    <option value="AllPatient">All Patient</option>
-					<option value="Custom">Custom Filter</option>					
+					<option value="AllPatient">All Patient</option>
+					<option value="Custom">Custom Filter</option>
 				</select>
+			</div>
+			<div class="col-6 mt-6">
+				<div class="card-body d-flex align-items-center"
+					style="padding: 10px; margin: 0;">
+					<form id="admitPatientForm">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-4">
+									<div id="startDateSection">
+
+										<label class="col-form-label spti-label">Enter Start
+											Date:</label> <input type="date" class="col-md-12 spti-inpt"
+											id="startDate" name="startDate">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div id="endDateSection">
+
+										<label class="col-form-label spti-label">Enter End
+											Date:</label> <input type="date" class="col-md-12 spti-inpt"
+											id="endDate" name="endDate">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div id="submitButton">
+
+										<button type="button"
+											class="btn btn-warning btn-sm add-btn float-end Spti-btn"
+											onclick="generateReportByDateRange()">Generate
+											Report</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+
+
+
+
+
+		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-xl" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">Choice Any
 							Custom Filter:</h5>
-						<!-- <button type="button" class="close" data-dismiss="modal"
+						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
-						</button> -->
+						</button>
 					</div>
 					<div class="modal-body">
 						<div class="row mt-4">
-							<!-- Enter Admission Date Card -->
+							Enter Admission Date Card
 							<div class="col-md-3">
 								<div class="card report-card">
 									<div class="card-body">
@@ -92,7 +137,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- Enter Start Date and End Date Card -->
+							Enter Start Date and End Date Card
 							<div class="col-md-3 mt-6">
 								<div class="card report-card">
 									<div class="card-body">
@@ -115,7 +160,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- Enter Year Card -->
+							Enter Year Card
 							<div class="col-md-3">
 								<div class="card report-card">
 									<div class="card-body">
@@ -133,7 +178,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- All Patients Card -->
+							All Patients Card
 							<div class="col-md-3">
 								<div class="card report-card">
 									<div class="card-body">
@@ -155,7 +200,7 @@
 				</div>
 			</div>
 		</div>
-
+ -->
 
 
 
@@ -243,7 +288,8 @@
 					<div class="card-body" style="display: none;">
 						<h5 class="card-title" id="patientTable" style="display: none;">Patient
 							List</h5>
-						<div class="table-responsive" style="display: none;">
+						<div class="table-responsive" style="display: none;"
+							id="patientDataTable">
 							<table class="table table-striped table-striped-sm"
 								id="patientListTable">
 								<thead>
@@ -254,6 +300,7 @@
 										<th>Age</th>
 										<th>Phone Number</th>
 										<th>Email</th>
+										<th>Status</th>
 									</tr>
 								</thead>
 								<tbody id="patientListBody">
@@ -261,22 +308,25 @@
 							</table>
 						</div>
 
-						<div id="noDataMessage" class="text-center" style="display: none;">
-							<p>Wrong Date insert!!! No data available...</p>
-						</div>
+
 					</div>
+					<div id="noDataMessage" class="text-center" style="display: none;">
+						No data available.</div>
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-<script>
-$(document).ready(function(){
+	<script> 
+/* $(document).ready(function(){
     $('#reportType').on('change', function(){
         if ($(this).val() === 'Custom') {           
             $('#myModal').modal('show');          
@@ -285,25 +335,12 @@ $(document).ready(function(){
             $('#myModal').modal('hide');
         }
     });
-});
-
-$(document).ready(function() {
-    $('#reportType').on('change', function() {
-        var selectedOption = $(this).val();
-        if (selectedOption === 'AllPatient') {
-            $.get("/admits/getAllPatient", function(data) {
-                displayPatientList(data);
-                showPatientTable();
-                $('#myModal').modal('hide');
-            });
-        } else {
-            $('#myModal').modal('hide');
-        }
-    });
-});
+}); */
 
 
-    function generateReportByDate() {
+
+
+ /*    function generateReportByDate() {
         var admissionDate = $("#admissionDate").val();
         $.get("/admits/AdmitProfileByDate/" + admissionDate,
             function(data) {
@@ -319,63 +356,10 @@ $(document).ready(function() {
                 displayPatientList(data);
                 $('#myModal').modal('hide'); 
             });
-    }
+    } */
 
-    function generateReportByDateRange() {
-        var startDate = $("#startDate").val();
-        var endDate = $("#endDate").val();
-        $.get("/admits/admissionStartAndEndDate/" + startDate + "/"
-            + endDate, function(data) {
-                displayPatientList(data);
-                $('#myModal').modal('hide'); 
-            });
-    }
-
-    function generateReportByAllPatient() {
-        $.get("/admits/getAllPatient", function(data) {
-            displayPatientList(data);
-            showPatientTable();
-            $('#myModal').modal('hide');
-        });
-    }
-
-    function getpatientList(selectedReport) {
-        $.get("/admits/todaysWeeksMonthPatient/" + selectedReport, function(data) {
-            displayPatientList(data);
-            showPatientTable();
-            $('#myModal').modal('hide'); 
-        });
-    }
-
-    function displayPatientList(data) {
-        var patientTableBody = $("#patientListBody");
-        patientTableBody.empty();
-        if (data && data.length > 0) {
-            $.each(data, function(index, patient) {
-                patientTableBody.append("<tr>" + "<td>" + patient.firstName
-                        + " " + patient.lastName + "</td>" + "<td>"
-                        + patient.gender + "</td>" + "<td>"
-                        + patient.address + "</td>" + "<td>" + patient.age
-                        + "</td>" + "<td>" + patient.phoneNumber + "</td>"
-                        + "<td>" + patient.email + "</td>" + "</tr>");
-            });
-            $("#noDataMessage").hide();
-            $("#patientTable").show();
-        } else {
-            $("#noDataMessage").show();
-            $("#patientTable").hide();
-        }
-    }
-
-    $('#reportType').change(function() {
-        var selectedReport = $(this).val();
-        getpatientList(selectedReport);
-    });
-
-    var initialReportType = $('#reportType').val();
-    getpatientList(initialReportType);
-
-    function showPatientTable() {
+   
+    /* function showPatientTable() {
         $(".card-body").show();
         $("#patientTable").show();
         $(".table-responsive").show();
@@ -384,9 +368,9 @@ $(document).ready(function() {
     $("#admissionDate, #admissionYear, #startDate, #endDate").on("change",
         function() {
             showPatientTable();
-        });
+        }); */
 
-    $("#admissionDate").on("change", function () {
+   /*  $("#admissionDate").on("change", function () {
         clearOtherFields("#admissionDate");
     });
 
@@ -402,8 +386,133 @@ $(document).ready(function() {
         var fieldsToClear = fieldId.split(", ");
         $("input[type='date']").not(fieldsToClear.join(", ")).val('');
         $("input[type='text']").not(fieldsToClear.join(", ")).val('');
-    }
+    } */
 </script>
+
+	<script>
+    $(document).ready(function() {
+        $('#startDateSection').hide();
+        $('#endDateSection').hide();
+        $('#submitButton').hide();
+      
+        $('#reportType').on('change', function() {
+            var selectedOption = $(this).val();
+            if (selectedOption === 'Custom') {
+                $('#startDateSection').show();
+                $('#endDateSection').show();
+                $('#submitButton').show();
+            } else {               
+                $('#startDateSection').hide();
+                $('#endDateSection').hide();
+                $('#submitButton').hide();                
+                clearDateFields();                
+                hidePatientTable();               
+                if (selectedOption === 'AllPatient') {
+                    generateReportByAllPatient();
+                }
+            }
+        });
+       
+        $('#submitButton').on('click', function() {            
+            showPatientTable();            
+            generateReportByDateRange();
+        });
+       
+        $('#startDate, #endDate').on('change', function() {            
+            if ($('#startDate').val() !== '' && $('#endDate').val() !== '') {                
+                $('#submitButton').prop('disabled', false);
+            } else {                
+                $('#submitButton').prop('disabled', true);                
+                hidePatientTable();
+            }
+        });
+    });
+
+    function clearDateFields() {
+        $("#startDate").val('');
+        $("#endDate").val('');
+    }
+
+    function showPatientTable() {
+        $(".card-body").show();
+        $("#patientTable").show();
+        $(".table-responsive").show();
+    }
+
+    function hidePatientTable() {
+        $(".card-body").hide();
+        $("#patientTable").hide();
+        $(".table-responsive").hide();
+    }
+
+    function generateReportByDateRange() {
+        var startDate = $("#startDate").val();
+        var endDate = $("#endDate").val();
+        $.get("/admits/admissionStartAndEndDate/" + startDate + "/" + endDate, function(data) {
+            displayPatientList(data);
+            $('#myModal').modal('hide');
+        });
+    }
+
+    function generateReportByAllPatient() {
+        $.get("/admits/getAllPatient", function(data) {
+            displayPatientList(data);
+            showPatientTable();
+            $('#myModal').modal('hide');
+        });
+    }
+
+    function getpatientList(selectedReport) {
+        $.get("/admits/todaysWeeksMonthPatient/" + selectedReport)
+            .done(function(data) {
+                if (data && data.length > 0) {
+                    displayPatientList(data);
+                    showPatientTable();
+                }else{
+                	$("#noDataMessage").text("No data available.");
+                    $("#noDataMessage").show();
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("AJAX error:", textStatus, errorThrown);
+                showError("No data available for the selected report.");
+            })
+            .always(function() {
+                $('#myModal').modal('hide');
+            });
+    }
+
+    function displayPatientList(data) {
+        var patientTableBody = $("#patientListBody");
+        patientTableBody.empty();
+        if (data && data.length > 0) {
+            $.each(data, function(index, patient) {
+                patientTableBody.append("<tr>" + "<td>" + patient.firstName
+                        + " " + patient.lastName + "</td>" + "<td>"
+                        + patient.gender + "</td>" + "<td>"
+                        + patient.address + "</td>" + "<td>" + patient.age
+                        + "</td>" + "<td>" + patient.phoneNumber + "</td>"
+                        + "<td>" + patient.email + "</td>" +  "<td>" + patient.admitDischargeStatus + "</td>" + "</tr>");
+            });
+            $("#noDataMessage").hide();
+            $("#patientTable").show();
+        } else {
+            $("#noDataMessage").text("No data available.");
+            $("#noDataMessage").show();
+            $("#patientTable").hide();
+        }
+    }
+
+
+    $('#reportType').change(function() {
+        var selectedReport = $(this).val();
+        getpatientList(selectedReport);
+    });
+
+    var initialReportType = $('#reportType').val();
+    getpatientList(initialReportType);
+</script>
+
 
 
 </body>
