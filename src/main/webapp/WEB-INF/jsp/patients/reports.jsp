@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +12,25 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
+	
+	<link rel="icon" type="image/x-icon" href="Verity.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js">
+	
+</script>
+
+<script defer type="text/javascript"
+	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	
+	
 <style>
 .error-message {
 	color: red;
@@ -39,12 +61,12 @@ line-height
 
 </head>
 <body>
-	<%@ include file="../common/header.jsp"%>
-
-	<div class="container mt-4">
+	<jsp:include page="../common/header.jsp"></jsp:include>
+    <div class="height-90">
+	<div class="main-content">
 		<div class="row">
 			<div class="col-12">
-				<h5 class="mb-4">Generate Patient Reports</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Generate Patient Reports</h5>
 			</div>
 		</div>
 
@@ -97,12 +119,6 @@ line-height
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
 
 		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -202,8 +218,6 @@ line-height
 		</div>
  -->
 
-
-
 		<!-- 	<div class="row mt-4">
 			<div class="col-md-3">
 				<div class="card report-card">
@@ -288,19 +302,22 @@ line-height
 					<div class="card-body" style="display: none;">
 						<h5 class="card-title" id="patientTable" style="display: none;">Patient
 							List</h5>
+							
 						<div class="table-responsive" style="display: none;"
 							id="patientDataTable">
-							<table class="table table-striped table-striped-sm"
-								id="patientListTable">
+							
+							<table class="table table-new m-0" id="tableID"
+				style="max-width: 100% !important;" id="patientListTable">
+							
 								<thead>
 									<tr>
-										<th>Patient Name</th>
-										<th>Gender</th>
-										<th>Address</th>
-										<th>Age</th>
-										<th>Phone Number</th>
-										<th>Email</th>
-										<th>Status</th>
+										<th style="width: 25%;">Patient Name</th>
+										<th style="width: 10%;">Gender</th>
+										<th style="width: 15%;">Address</th>
+										<th style="width: 10%;">Age</th>
+										<th style="width: 15%;">Phone Number</th>
+										<th style="width: 20%;">Email</th>
+										<th style="width: 15%;">Status</th>
 									</tr>
 								</thead>
 								<tbody id="patientListBody">
@@ -316,7 +333,7 @@ line-height
 			</div>
 		</div>
 
-
+   </div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -336,9 +353,6 @@ line-height
         }
     });
 }); */
-
-
-
 
  /*    function generateReportByDate() {
         var admissionDate = $("#admissionDate").val();
@@ -487,12 +501,26 @@ line-height
         patientTableBody.empty();
         if (data && data.length > 0) {
             $.each(data, function(index, patient) {
-                patientTableBody.append("<tr>" + "<td>" + patient.firstName
-                        + " " + patient.lastName + "</td>" + "<td>"
-                        + patient.gender + "</td>" + "<td>"
-                        + patient.address + "</td>" + "<td>" + patient.age
-                        + "</td>" + "<td>" + patient.phoneNumber + "</td>"
-                        + "<td>" + patient.email + "</td>" +  "<td>" + patient.admitDischargeStatus + "</td>" + "</tr>");
+                // Generating avatar HTML
+                /* var avatarHTML = '<div class="avatar"><span class="avatar-title">' + patient.firstName.charAt(0).toUpperCase() + '</span></div>'; */
+                
+              var avatarHTML =  '<div class="d-flex justify-content-start align-items-center">' +
+        '<div class=""><span class="avatar-title">' + patient.firstName.charAt(0).toUpperCase() + '</span></div>' +
+         
+        '</div>'
+
+                // Appending patient data with avatar
+                var patientRow = "<tr>" +
+                "<td><div class='d-flex justify-content-start align-items-center'>" + avatarHTML + " " + patient.firstName + " " + patient.lastName + "</div></td>"+
+                    "<td>" + patient.gender + "</td>" +
+                    "<td>" + patient.address + "</td>" +
+                    "<td>" + patient.age + "</td>" +
+                    "<td>" + patient.phoneNumber + "</td>" +
+                    "<td>" + patient.email + "</td>" +
+                    "<td>" + patient.admitDischargeStatus + "</td>" +
+                    "</tr>";
+
+                patientTableBody.append(patientRow);
             });
             $("#noDataMessage").hide();
             $("#patientTable").show();
@@ -503,7 +531,6 @@ line-height
         }
     }
 
-
     $('#reportType').change(function() {
         var selectedReport = $(this).val();
         getpatientList(selectedReport);
@@ -512,8 +539,6 @@ line-height
     var initialReportType = $('#reportType').val();
     getpatientList(initialReportType);
 </script>
-
-
 
 </body>
 </html>
