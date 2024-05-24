@@ -19,4 +19,6 @@ public class PatientResponseDto {
 	private String phoneNumber;
 	private String email;
 	private int branch;
+	private String admitDischargeStatus;
+
 }

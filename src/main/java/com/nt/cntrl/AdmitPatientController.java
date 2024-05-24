@@ -135,7 +135,7 @@ public class AdmitPatientController {
 		} else {
 			return null;
 		}
-	}
+	} 
 	
 	@GetMapping("/getAllPatient")
 	@ResponseBody
