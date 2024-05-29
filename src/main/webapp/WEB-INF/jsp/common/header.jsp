@@ -226,6 +226,11 @@
 						<li><a href="/patients/reports" class="nav_link"><i
 					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">Reports</span> </a></li>
 
+
+                         <li><a href="/opds/OpdDiagnosis" class="nav_link"><i
+					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">OpdDiagnosis</span> </a></li>
+                         
+                         
 					</ul>
 
 				</div>

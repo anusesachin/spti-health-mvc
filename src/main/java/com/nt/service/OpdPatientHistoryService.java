@@ -29,6 +29,8 @@ public interface OpdPatientHistoryService {
 
 	public List<PatientOPDHistoryResponseDto> getHistoryPatientDetailspatientId(Long id);
 
+	public List<PatientOPDHistoryResponseDto> OpdPatientHistory(String disease, String todayrecord);
+
 
 
 	

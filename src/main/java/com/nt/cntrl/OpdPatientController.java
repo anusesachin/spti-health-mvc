@@ -36,8 +36,24 @@ public class OpdPatientController {
 	@Autowired
 	private OpdPatientHistoryService opdPatientHistoryService;
 	
-
 	
+	@GetMapping("/OpdDiagnosis")
+	public String report() {
+		return "opdPatient/opdPationsDiagnosis";
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/todayOpdPatientHistory/{disease}/{todayrecord}")
+	public List<PatientOPDHistoryResponseDto> OpdPatientHistory( @PathVariable String disease, @PathVariable String todayrecord) {
+
+		List<PatientOPDHistoryResponseDto> listofopdPatient = opdPatientHistoryService.OpdPatientHistory(disease, todayrecord);
+		
+		return listofopdPatient;
+
+	}
+
+
 	@GetMapping("/historyPatientDetails-form/{id}")
 	public String historyPatientDetails(@PathVariable Long id, Model model) {
 		List<PatientOPDHistoryResponseDto> patient = opdPatientHistoryService.getHistoryPatientDetailspatientId( id );
