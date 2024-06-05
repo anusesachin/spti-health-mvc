@@ -208,4 +208,37 @@ public class AdmitPatientServiceImpl implements AdmitPatientService {
 	        return Collections.emptyList();
 	    }
 	}
+
+	@Override
+	public List<AdmitPatientResponseDto> todayWeeklyMonthlyDischargePatient(String todayrecord) {
+		RestTemplate template = new RestTemplate();
+		String url = "http://localhost:9696/admits/disacharge/todayWeeklyMonthlyDischargePatient/"+todayrecord;
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
+		try {
+	        ResponseEntity<List<AdmitPatientResponseDto>> res = template.exchange(url, HttpMethod.GET, entity,
+	                new ParameterizedTypeReference<List<AdmitPatientResponseDto>>() {});
+	        return res.getBody();
+	    } catch (RestClientException e) {
+	        
+	        return Collections.emptyList();
+	    }
+	}
+
+	/*
+	 * @Override public List<PatientResponseDto> findDataByStartToEndDate(String
+	 * todayrecord) { RestTemplate template = new RestTemplate(); String url =
+	 * "http://localhost:9696/admits/getdataWithStartAndEndDate/" + todayrecord;
+	 * HttpHeaders headers = new HttpHeaders(); HttpEntity<String> entity = new
+	 * HttpEntity<>("body", headers); try {
+	 * 
+	 * ResponseEntity<List<PatientResponseDto>> res = template.exchange(url,
+	 * HttpMethod.GET, entity, new
+	 * ParameterizedTypeReference<List<PatientResponseDto>>() { }); return
+	 * res.getBody();
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return null; }
+	 */
 }

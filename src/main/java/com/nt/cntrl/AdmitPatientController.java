@@ -148,19 +148,19 @@ public class AdmitPatientController {
 	    }
 	}
 	
-	@GetMapping("/todaysWeeksMonthPatient/{todayrecord}")
 	@ResponseBody
-	public ResponseEntity<?> getTodayWeekMonthData(@PathVariable String todayrecord){
-		 List<PatientResponseDto> opdPatients = admitPatientService.getTodaysWeekMonthPatient(todayrecord);
-		    if (opdPatients.isEmpty()) {
-		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for the specified date.");
-		    }
-		    return ResponseEntity.ok(opdPatients);
-		}
+    @GetMapping("/todaysWeeksMonthPatient/{todayrecord}")
+    public ResponseEntity<?> getTodayWeekMonthData(@PathVariable String todayrecord) {
+        List<PatientResponseDto> opdPatients = admitPatientService.getTodaysWeekMonthPatient(todayrecord);
+        if (opdPatients.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for the specified date.");
+        }
+        return ResponseEntity.ok(opdPatients);
+    }
 			
 	@ResponseBody
 	@GetMapping("/getCurrentdateAdmitPatient/{todayrecord}")
-	public List<AdmitPatientResponseDto>  todayAdmitPatient( @PathVariable String todayrecord) {
+	public List<AdmitPatientResponseDto> todayAdmitPatient( @PathVariable String todayrecord) {
 
 		List<AdmitPatientResponseDto> listofAdmitPatient = admitPatientService.todayAdmitPatient(todayrecord);
 		
@@ -169,10 +169,43 @@ public class AdmitPatientController {
 	
 	@ResponseBody
 	@GetMapping("/getCurrentdateDischargePatient/{todayrecord}")
-	public List<AdmitPatientResponseDto>   todayDischargePatient( @PathVariable String todayrecord) {
+	public List<AdmitPatientResponseDto> todayDischargePatient( @PathVariable String todayrecord) {
 		List<AdmitPatientResponseDto> listofAdmitPatient = admitPatientService. todayDischargePatient(todayrecord);
 		
 		return listofAdmitPatient;
      }
+	
+	  @ResponseBody
+	    @GetMapping("/getTodayWeeklyMonthlyDischargePatient/{todayrecord}")
+	    public ResponseEntity<?> getTodayWeeklyMonthlyDischargePatients(@PathVariable String todayrecord) {
+	        try {
+	            List<AdmitPatientResponseDto> todayWeeklyMonthlyDischargePatients = admitPatientService.todayWeeklyMonthlyDischargePatient(todayrecord);
+	            if (todayWeeklyMonthlyDischargePatients != null && !todayWeeklyMonthlyDischargePatients.isEmpty()) {
+	                return ResponseEntity.ok(todayWeeklyMonthlyDischargePatients);
+	            } else {
+	                return ResponseEntity.notFound().build(); 
+	            }
+	        } catch (Exception e) {
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                                 .body("An error occurred while fetching today's discharge patients.");
+	        }
+	    }
+	  
+		/*
+		 * @GetMapping("/admissionStartAndEndDate/{todayrecord}")
+		 * 
+		 * @ResponseBody public ResponseEntity<List<PatientResponseDto>>
+		 * getDataByStartToEndDate(@PathVariable String todayrecord ,HttpSession session
+		 * ) {
+		 * 
+		 * String user = (String) session.getAttribute("username");
+		 * List<PatientResponseDto> resultOfRandom =
+		 * admitPatientService.findDataByStartToEndDate(todayrecord); if (user != null)
+		 * { if (resultOfRandom != null && !resultOfRandom.isEmpty()) { return
+		 * ResponseEntity.ok(resultOfRandom); } else { return
+		 * ResponseEntity.notFound().build(); } } else { return null; } }
+		 */
+		
+
 	
 }
