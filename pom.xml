@@ -28,7 +28,6 @@
 			<artifactId>kernel</artifactId>
 			<version>7.1.16</version>   
 		</dependency>
-
 		
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -89,7 +88,6 @@
 </dependency>
        
 	</dependencies>
-  
  <build>
 		<plugins>
 			<plugin>

@@ -56,6 +56,17 @@
                     <option value="Custom">Custom Filter</option>
                 </select>
             </div>
+             
+             <div class="col-12 col-md-3 d-flex align-items-center">
+                <select id="reportTypeForAdmitDischarge" class="form-select" aria-label="Default select example" disabled>
+                    <option value="" disabled selected>Please Select An Option</option>
+                    <option value="Admit">Admit</option>
+                    <option value="Discharge">Discharge</option>
+                </select>
+            </div>
+             
+             
+            <div class="row">
             <div class="col-6 mt-6">
                 <div class="card-body d-flex align-items-center" style="padding: 10px; margin: 0;">
                     <form id="admitPatientForm">
@@ -83,15 +94,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-md-3 d-flex align-items-center">
-                <select id="reportTypeForAdmitDischarge" class="form-select" aria-label="Default select example" disabled>
-                    <option value="" disabled selected>Please Select An Option</option>
-                    <option value="Admit">Admit</option>
-                    <option value="Discharge">Discharge</option>
-                </select>
             </div>
         </div>
 
@@ -152,11 +154,18 @@ $(document).ready(function() {
     $('#reportTypeForAdmitDischarge').on('change', function() {
         var selectedOption = $(this).val();
         var reportType = $('#reportType').val();
-        if (selectedOption !== '' && reportType !== '') {
+
+        if (selectedOption !== '' && reportType !== '') {          
+            var previousOption = $('#reportTypeForAdmitDischarge').data('previousOption');
+            if ((previousOption === 'Admit' || previousOption === 'Discharge') && (selectedOption === 'Admit' || selectedOption === 'Discharge')) {
+                $(this).val('');
+            }
+           
+            $('#reportTypeForAdmitDischarge').data('previousOption', selectedOption);
             fetchPatientData(reportType, selectedOption);
         }
     });
-    
+      
     $('#submitButton').on('click', function() {            
         showPatientTable();            
         generateReportByDateRange();
