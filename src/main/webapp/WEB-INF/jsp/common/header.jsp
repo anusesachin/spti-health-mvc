@@ -230,6 +230,9 @@
                          <li><a href="/opds/OpdDiagnosis" class="nav_link"><i
 					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">OpdDiagnosis</span> </a></li>
                          
+                          <li><a href="/diagnosiss/getAllPatient" class="nav_link"><i
+					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">DiagnosisHistory</span> </a></li>
+                         
                          
 					</ul>
 

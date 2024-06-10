@@ -71,7 +71,7 @@
 											<label class="col-form-label fs-6">Diagnosis</label> <input
 												type="text" name="diagnosis" class="col-md-12 spti-inpt border-0 "
 												placeholder="e.g Maleria"
-												value="${patientOPDHistory.diagnosis}">
+												value="${patientOPDHistory.diagnosis.diagnosis}">
 										</div>
 										<div class="mb-3">
 											<label class="form-label col-form-label fs-6">Treatment</label>

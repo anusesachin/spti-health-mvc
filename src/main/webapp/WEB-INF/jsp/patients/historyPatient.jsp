@@ -61,7 +61,7 @@
                                                                                 </a>
                                                                             </td>
                                                                             <td>${opd.seenByDoctor}</td>
-                                                                            <td>${opd.diagnosis}</td>
+                                                                            <td>${opd.diagnosis.diagnosis}</td>
                                                                         </tr>
                                                                         
 
