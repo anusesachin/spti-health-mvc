@@ -16,7 +16,7 @@ public class PatientOPDHistoryResponseDto {
 
 	private Long id;
 	private String seenByDoctor;
-	private String diagnosis;
+	private DiagnosisResponseDto diagnosis;
 	private String treatment;
 	private String bill;
 	private String billStatus;

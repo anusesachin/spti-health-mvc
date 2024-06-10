@@ -160,7 +160,7 @@ li {
 																<td><span style="font-weight: 500"
 																	class="text-info"> ${ DateTimeFormatter.ofPattern("yyyy-MM-dd").format(opd.dateOfTreatment) }</span></td>
 																<td>${opd.seenByDoctor }</td>
-																<td>${opd.diagnosis }</td>
+																<td>${opd.diagnosis.diagnosis }</td>
 																<td>${opd.bill }</td>
 																<td>${opd.pendingAmount }</td>
 																<c:choose>
