@@ -29,5 +29,9 @@ public interface AdmitPatientService {
 
 	List<AdmitPatientResponseDto> todayDischargePatient(String todayrecord);
 
+	List<AdmitPatientResponseDto> todayWeeklyMonthlyDischargePatient(String todayrecord);
+
+//	List<PatientResponseDto> findDataByStartToEndDate(String todayrecord);
+
 
 }

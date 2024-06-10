@@ -69,7 +69,7 @@ public class DischargePatientController {
 	}
 	
 	@PostMapping
-	public String dischargePatient( @Valid @ModelAttribute DischargePatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra) {
+	public String dischargePatient(  @ModelAttribute DischargePatientRequestDto dto, Model model, HttpSession session, RedirectAttributes ra) {
 			
 		dischargePatientService.dischargePatient( dto );
 			

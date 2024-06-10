@@ -174,7 +174,7 @@ color:black ;
 								<div class="row">
 								<div class="col-md-4">
 										<label class="col-form-label spti-label">Discharge Date And Time</label>
-				    					<input type="datetime-local" name="dischargeDate"  style= "margin-bottom: -1px;" style= "margin-bottom: 17px;" class="col-md-12 spti-inpt">
+				    					<input type="datetime-local" name="dischargedAt" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;" style= "margin-bottom: 17px;" >
 								</div>
 								
 								  <div class="col-md-4">

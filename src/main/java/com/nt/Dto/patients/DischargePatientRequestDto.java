@@ -21,15 +21,15 @@ public class DischargePatientRequestDto {
 
 	private Long dischargePatientId;
 
-	@NotNull(message = "MLC number must not be null")
+//	@NotNull(message = "MLC number must not be null")
 	private Long MLC_No;
 
-	@NotNull(message = "IPD number must not be null")
+//	@NotNull(message = "IPD number must not be null")
 	private Long IPD_No;
 
-	private String consultant;
+	private String consultatnt;
 
-	@NotBlank(message = "Diagnosis must not be blank")
+//	@NotBlank(message = "Diagnosis must not be blank")
 	private String diagnosis;
 
 	private String clinical_History;
@@ -38,15 +38,15 @@ public class DischargePatientRequestDto {
 
 	private Long admitPatientId;
 
-	@NotBlank(message = "Admit discharge status must not be blank")
+//	@NotBlank(message = "Admit discharge status must not be blank")
 	private String admitDischargeStatus;
 
-	@Positive(message = "Amount paid must be a positive number")
+//	@Positive(message = "Amount paid must be a positive number")
 	private Long amountPaid;
 
 	private Long amounttobePaid;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	private LocalDateTime dischargeDate;
+	private LocalDateTime dischargedAt;
 
 }
