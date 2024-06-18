@@ -23,7 +23,7 @@
 <style>
 
 .col-form-label.spti-label {
-	font-size: 17px;
+	font-size: 13px;
 	color: #333;
 	margin-top:15px;
 }
@@ -47,6 +47,7 @@
 color:black ;
 
 }
+
 </style>
 </head>
 

@@ -19,7 +19,7 @@
 			<div class="modal-body">
 				<h5 class="modal-title" id="exampleModalLabel">Patient New
 					Treatment</h5>
-					<br>
+					<hr>
 					<table class="table table-new m-0" id="treatmentTable"
 			style="max-width: 100% !important;">
 			<thead class="tableHead">
@@ -179,22 +179,29 @@
 
 
 		function addRow() {
-			var table = document.getElementById("treatmentTable");
-			var row = table.insertRow(table.rows.length);
+		    var table = document.getElementById("treatmentTable");
+		    var row = table.insertRow(table.rows.length);
 
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			var cell4 = row.insertCell(3);
-			var cell5 = row.insertCell(4);
-			var cell6 = row.insertCell(5);
-			
-			cell1.innerHTML = "<input type='text' name='medicineName' class='col-md-12 spti-inpt' placeholder='ex. Dollo 500mg'>";
-			cell2.innerHTML = "<input type='text' name='medicineTime' class='col-md-12 spti-inpt' placeholder='ex. morning'>";
-			cell3.innerHTML = "<input type='date' name='treatmentDate' class='col-md-12 spti-inpt' placeholder='select'>";
-			cell4.innerHTML = "<input type='text' name='bill' class='col-md-12 spti-inpt' placeholder='ex: 5$'>";
-			cell5.innerHTML = "<select name='billPaid' class='col-md-12 spti-inpt'> <option value=''>Select</option> <option value='Yes'>Yes</option> <option value='No'>No</option> </select>";
-			cell6.innerHTML = "<select name='paymentMode' class='col-md-12 spti-inpt'> <option value=''>Select</option> <option value='Online'>Online</option> <option value='Cash'>Cash</option> </select>";		
+		    var cell1 = row.insertCell(0);
+		    var cell2 = row.insertCell(1);
+		    var cell3 = row.insertCell(2);
+		    var cell4 = row.insertCell(3);
+		    var cell5 = row.insertCell(4);
+		    var cell6 = row.insertCell(5);
+		    var cell7 = row.insertCell(6); 
+
+		    cell1.innerHTML = "<input type='text' name='medicineName' class='col-md-12 spti-inpt' placeholder='ex. Dollo 500mg'>";
+		    cell2.innerHTML = "<input type='text' name='medicineTime' class='col-md-12 spti-inpt' placeholder='ex. morning'>";
+		    cell3.innerHTML = "<input type='date' name='treatmentDate' class='col-md-12 spti-inpt' placeholder='select'>";
+		    cell4.innerHTML = "<input type='text' name='bill' class='col-md-12 spti-inpt' placeholder='ex: 5$'>";
+		    cell5.innerHTML = "<select name='billPaid' class='col-md-12 spti-inpt'> <option value=''>Select</option> <option value='Yes'>Yes</option> <option value='No'>No</option> </select>";
+		    cell6.innerHTML = "<select name='paymentMode' class='col-md-12 spti-inpt'> <option value=''>Select</option> <option value='Online'>Online</option> <option value='Cash'>Cash</option> </select>";
+		    cell7.innerHTML = "<button class='btn btn-danger btn-sm' onclick='removeRow(this)'>Remove</button>"; 
+		}
+
+		function removeRow(button) {
+		    var row = button.parentNode.parentNode;
+		    row.parentNode.removeChild(row);
 		}
 
 		function removeRow() {
