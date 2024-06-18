@@ -20,12 +20,10 @@ import com.nt.service.OpdPatientHistoryService;
 
 @Service
 public class OpdPatientHistoryServiceImpl implements OpdPatientHistoryService {
-	
-	
 	@Override
-	public List<PatientOPDHistoryResponseDto> OpdPatientHistory( String disease ,String todayrecord ) {
+	public List<PatientOPDHistoryResponseDto> opdPatientHistory( String disease ,String todayrecord ,String ages ) {
 		RestTemplate template = new RestTemplate();
-		String url = "http://localhost:9696/opds/todayOpdPatientHistory/"+disease +"/"+ todayrecord ;
+		String url = "http://localhost:9696/opds/todayOpdPatientHistory/"+disease +"/"+ todayrecord + "/" + ages ;
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
 		try {
@@ -40,9 +38,6 @@ public class OpdPatientHistoryServiceImpl implements OpdPatientHistoryService {
 
 		return null;
 	}
-
-	
-	
 	
 	@Override
 	public List<PatientOPDHistoryResponseDto> getHistoryPatientDetailspatientId( Long id ) {

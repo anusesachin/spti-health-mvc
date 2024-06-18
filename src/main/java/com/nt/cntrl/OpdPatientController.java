@@ -1,5 +1,6 @@
 package com.nt.cntrl;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -44,13 +45,16 @@ public class OpdPatientController {
 	
 	
 	@ResponseBody
-	@GetMapping("/todayOpdPatientHistory/{disease}/{todayrecord}")
-	public List<PatientOPDHistoryResponseDto> OpdPatientHistory( @PathVariable String disease, @PathVariable String todayrecord) {
+	@GetMapping("/todayOpdPatientHistory/{disease}/{todayrecord}/{ages}")
+	public List<PatientOPDHistoryResponseDto> opdPatientHistory(@PathVariable String disease,@PathVariable String todayrecord, @PathVariable String ages) {
 
-		List<PatientOPDHistoryResponseDto> listofopdPatient = opdPatientHistoryService.OpdPatientHistory(disease, todayrecord);
+		List<PatientOPDHistoryResponseDto>opdPatientHistorys =  opdPatientHistoryService.opdPatientHistory(disease, todayrecord, ages);
+		if(opdPatientHistorys ==null || opdPatientHistorys.isEmpty()) {
+			return Collections.emptyList();
+		}else {
+			return opdPatientHistorys;
+		}
 		
-		return listofopdPatient;
-
 	}
 
 
