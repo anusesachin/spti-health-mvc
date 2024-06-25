@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.nt.Dto.patients.DiagnosisResponseDto;
 import com.nt.Dto.patients.OpdPatienPageDto;
 import com.nt.Dto.patients.PatientOPDHistoryRequestDTO;
 import com.nt.Dto.patients.PatientOPDHistoryResponseDto;
@@ -26,6 +27,7 @@ import com.nt.Dto.patients.PatientResponseDto;
 import com.nt.constants.MessageConstants;
 import com.nt.service.OpdPatientHistoryService;
 import com.nt.service.PatientService;
+import com.nt.service.StaticDataService;
 
 @Controller
 @RequestMapping( "/opds" )
@@ -36,13 +38,6 @@ public class OpdPatientController {
 
 	@Autowired
 	private OpdPatientHistoryService opdPatientHistoryService;
-	
-	
-	@GetMapping("/OpdDiagnosis")
-	public String report() {
-		return "opdPatient/opdPationsDiagnosis";
-	}
-	
 	
 	@ResponseBody
 	@GetMapping("/todayOpdPatientHistory/{disease}/{todayrecord}/{ages}")
@@ -56,12 +51,10 @@ public class OpdPatientController {
 		}
 		
 	}
-
-
 	@GetMapping("/historyPatientDetails-form/{id}")
 	public String historyPatientDetails(@PathVariable Long id, Model model) {
-		List<PatientOPDHistoryResponseDto> patient = opdPatientHistoryService.getHistoryPatientDetailspatientId( id );
-		model.addAttribute( "PatientOPDHistory", patient );
+		PatientOPDHistoryResponseDto OPDpatient = opdPatientHistoryService.getHistoryPatientDetailspatientId( id );
+		model.addAttribute( "OPDHistory", OPDpatient );
 		return "patients/historyPatientDetails" ;
 				
 	}
@@ -76,6 +69,7 @@ public class OpdPatientController {
 	
 	@GetMapping( "/history-form/patients/{id}" )
 	public String addOpdHistoryForm( @PathVariable Long id, Model model ) {
+		  
 		PatientResponseDto patient = patientService.getPatientById( id );
 		model.addAttribute( "patient", patient );
 		return "patients/addOpdHistory";
@@ -155,10 +149,5 @@ public class OpdPatientController {
 		return listofopdPatient;
 
 	}
-	
-
-	
-
-	
 
 }

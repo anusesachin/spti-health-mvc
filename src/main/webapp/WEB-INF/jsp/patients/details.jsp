@@ -118,8 +118,10 @@ li {
 													<tbody>
 														<c:forEach items="${opd}" var="opd">
 															<tr>
-																<td><span style="font-weight: 500"
-																	class="text-info"> ${ DateTimeFormatter.ofPattern("yyyy-MM-dd").format(opd.dateOfTreatment) }</span></td>
+																<td><a
+																	onclick="window.location.href='/opds/historyPatientDetails-form/${opd.id}'">
+																		<span style="font-weight: 500" class="text-info">${opd.treatmentDate}</span>
+																</a></td>
 																<td>${opd.seenByDoctor }</td>
 																<td>${opd.diagnosis }</td>
 																<td>${opd.bill }</td>
@@ -157,8 +159,10 @@ li {
 													<tbody>
 														<c:forEach items="${opdHistory}" var="opd">
 															<tr>
-																<td><span style="font-weight: 500"
-																	class="text-info"> ${ DateTimeFormatter.ofPattern("yyyy-MM-dd").format(opd.dateOfTreatment) }</span></td>
+																<td><a
+																	onclick="window.location.href='/opds/historyPatientDetails-form/${opd.id}'">
+																		<span style="font-weight: 500" class="text-info">${opd.treatmentDate}</span>
+																</a></td>
 																<td>${opd.seenByDoctor }</td>
 																<td>${opd.diagnosis.diagnosis }</td>
 																<td>${opd.bill }</td>
