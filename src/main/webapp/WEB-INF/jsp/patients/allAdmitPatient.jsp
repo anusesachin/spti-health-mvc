@@ -29,17 +29,19 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="height-90">
 		<div class="main-content  ">
-			<h5 class="modal-title" id="exampleModalLabel">All Admit Patients</h5>
+			<h5 class="modal-title" id="exampleModalLabel "
+				style="margin-left: 375px;">All Admit Patients</h5>
 			<hr>
 			<table class="table table-new m-0" id="tableID"
 				style="max-width: 100% !important;">
 				<thead>
 					<tr>
-						<th style="width: 25%;">Name</th>
-						<th style="width: 15%;">Phone Number</th>
-						<th style="width: 20%;">Email</th>
-						<th style="width: 15%;">Admition Date</th>
-						<th style="width: 10%;">Status</th>
+						<th id="nme" style="width: 25%; padding-left: 34px;background-color: #36dad0;">Name</th>
+						<th style="width: 15%; padding-left: 15px;background-color: #36dad0;">Phone Number</th>
+						<th style="width: 20%; padding-left: 55px;background-color: #36dad0;">Email</th>
+
+						<th style="width: 15%;background-color: #36dad0;">Admition Date</th>
+						<th style="width: 10%;background-color: #36dad0; ">Status</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,11 +59,11 @@
 												onclick="window.location.href='/admits/AdmitProfile/${user.patient.id}'">${user.patient.firstName}
 												${user.patient.lastName}</a>
 										</h5>
-										
+
 									</div>
 								</div></td>
 							<td style="width: 15%;">${user.patient.phoneNumber}</td>
-							<td style="width: 20%;">${user.patient.email}</td>							
+							<td style="width: 20%;">${user.patient.email}</td>
 							<td style="width: 20%;">${user.admissionDate}</td>
 							<td style="width: 20%;">${user.admitDischargeStatus}</td>
 
