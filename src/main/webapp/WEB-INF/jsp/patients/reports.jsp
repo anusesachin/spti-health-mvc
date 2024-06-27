@@ -33,6 +33,9 @@
 #tableID {
     display: none;
 }
+#tableID thead { 
+    background-color:#ddd !important;
+}
 </style>
 </head>
 <body>
@@ -42,6 +45,7 @@
         <div class="row">
             <div class="col-12">
                 <h5 class="modal-title" id="exampleModalLabel">Generate Patient Reports</h5>
+                <hr>
             </div>
         </div>
 

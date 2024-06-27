@@ -68,7 +68,7 @@
                                                                     </c:forEach>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                    <c:forEach items="${opd.dateOfTreatment}" var="opd" varStatus="status">
+                                                                    <c:forEach items="${PatientOPDHistory}" var="opd" varStatus="status">
                                                                         <tr>
                                                                             <td>
                                                                                 <a onclick="window.location.href='/patients/details-form/${user.id}'">

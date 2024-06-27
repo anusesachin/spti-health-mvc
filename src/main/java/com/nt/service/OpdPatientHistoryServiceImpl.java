@@ -1,6 +1,7 @@
 package com.nt.service;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.nt.Dto.patients.OpdPatienPageDto;
@@ -20,12 +22,10 @@ import com.nt.service.OpdPatientHistoryService;
 
 @Service
 public class OpdPatientHistoryServiceImpl implements OpdPatientHistoryService {
-	
-	
 	@Override
-	public List<PatientOPDHistoryResponseDto> OpdPatientHistory( String disease ,String todayrecord ) {
+	public List<PatientOPDHistoryResponseDto> opdPatientHistory( String disease ,String todayrecord ,String ages ) {
 		RestTemplate template = new RestTemplate();
-		String url = "http://localhost:9696/opds/todayOpdPatientHistory/"+disease +"/"+ todayrecord ;
+		String url = "http://localhost:9696/opds/todayOpdPatientHistory/"+disease +"/"+ todayrecord + "/" + ages ;
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
 		try {
@@ -40,20 +40,17 @@ public class OpdPatientHistoryServiceImpl implements OpdPatientHistoryService {
 
 		return null;
 	}
-
-	
-	
 	
 	@Override
-	public List<PatientOPDHistoryResponseDto> getHistoryPatientDetailspatientId( Long id ) {
+	public PatientOPDHistoryResponseDto getHistoryPatientDetailspatientId(Long id) {
 		RestTemplate template = new RestTemplate();
-		String url = "http://localhost:9696/opds/patients/" + id;
+		String url = "http://localhost:9696/opds/patientsOpd/" + id;
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<String> entity = new HttpEntity<>( "body", headers );
 		try {
-			ParameterizedTypeReference<List<PatientOPDHistoryResponseDto>> responseType = new ParameterizedTypeReference<List<PatientOPDHistoryResponseDto>>() {
+			ParameterizedTypeReference<PatientOPDHistoryResponseDto> responseType = new ParameterizedTypeReference<PatientOPDHistoryResponseDto>() {
 			};
-			ResponseEntity<List<PatientOPDHistoryResponseDto>> res = template.exchange( url, HttpMethod.GET, entity, responseType );
+			ResponseEntity<PatientOPDHistoryResponseDto> res = template.exchange( url, HttpMethod.GET, entity, responseType );
 			return res.getBody();
 
 		} catch ( Exception e ) {
@@ -122,6 +119,7 @@ public class OpdPatientHistoryServiceImpl implements OpdPatientHistoryService {
 		}
 		return null;
 	}
+
 
 	
 
