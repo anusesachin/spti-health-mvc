@@ -51,37 +51,37 @@
 						</div>
 						<div class="modal-body">
 							<form class="login-form"
-								action="/opds/historyPatientDetails-form" method="post">
-								 <c:forEach items="${PatientOPDHistory}" var="patientOPDHistory">
+								action="/opds/historyPatientDetails-form/${OPDHistory.id }" method="post">
+								 
 									<div class="row">
 
                                          <div class="col-md-4">
 											<label class="col-form-label fs-6"> Date
 											</label><br> <span class="col-md-12 spti-inpt border-0 ">
-												${ patientOPDHistory.treatmentDate }</span>
+												${ OPDHistory.treatmentDate }</span>
 										</div>
 
 										<div class="col-md-4">
 											<label class="col-form-label fs-6">Seen by
 												doctor</label> <input type="text" name="seenByDoctor"
 												class="col-md-12 spti-inpt border-0 "
-												value="${patientOPDHistory.seenByDoctor}">
+												value="${OPDHistory.seenByDoctor}">
 										</div>
 										<div class="col-md-4">
 											<label class="col-form-label fs-6">Diagnosis</label> <input
 												type="text" name="diagnosis" class="col-md-12 spti-inpt border-0 "
 												placeholder="e.g Maleria"
-												value="${patientOPDHistory.diagnosis.diagnosis}">
+												value="${OPDHistory.diagnosis.diagnosis}">
 										</div>
 										<div class="mb-3">
 											<label class="form-label col-form-label fs-6">Treatment</label>
 											<textarea class="form-control"  id="w3review" rows="3"
-												name="treatment">${patientOPDHistory.treatment}</textarea>
+												name="treatment">${OPDHistory.treatment}</textarea>
 										</div>
 
 
 									</div>
-								</c:forEach>
+								
 								<div class="col-md-12">
 
 									<button type="button"

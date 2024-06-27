@@ -85,6 +85,23 @@
                                                                             <td>${opd.seenByDoctor}</td>
                                                                             <td>${opd.diagnosis.diagnosis}</td>
                                                                         </tr>
+
+                                                                    </c:forEach>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <c:forEach items="${PatientOPDHistory}" var="opd" varStatus="status">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <a onclick="window.location.href='/patients/details-form/${user.id}'">
+                                                                                    <span style="font-weight: 500" class="text-info">
+                                                                                        ${DateTimeFormatter.ofPattern("yyyy-MM-dd").format(opd.dateOfTreatment)}
+                                                                                    </span>
+                                                                                </a>
+                                                                            </td>
+                                                                            <td>${opd.seenByDoctor}</td>
+                                                                            <td>${opd.diagnosis}</td>
+                                                                        </tr>
+
                                                                     </c:forEach>
                                                                 </tbody>
                                                             </table>
