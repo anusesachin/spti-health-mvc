@@ -89,6 +89,12 @@ margin-bottom: -3px;
 color:black ;
 
 }
+
+.col-form-label.spti-label {
+    font-size: 13px;
+    color: #333;
+}	
+
 </style>
 </head>
 
@@ -98,6 +104,7 @@ color:black ;
 		<div class="main-content  ">
 			<div class="modal-body">
 				<h5 class="modal-title" id="exampleModalLabel">Add Patient</h5>
+				<hr>
 				<form class="login-form" id="login-form" action="/patients"
 					method="post">
 					<div class="row">

@@ -51,6 +51,11 @@
 	padding: 4px;
 	color: #757575;
 }
+
+.col-form-label.spti-label {
+    font-size: 13px;
+    color: #333;
+}
 </style>
 </head>
 
@@ -59,6 +64,7 @@
 	<div class="height-90">
 		<div class="main-content  ">
 			<h5 class="modal-title" id="exampleModalLabel">Update Patient</h5>
+			<hr>
 			<div class="modal-body">
 				<form class="login-form" action="/patients/update" method="post">
 					<div class="row">

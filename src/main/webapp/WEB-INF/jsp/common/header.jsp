@@ -210,28 +210,28 @@
 				<div class="nav_list">
 					<ul style="padding: 5px !important;">
 						<li><a href="/dashboards/hr" class="nav_link"> <i
-								class='bx bxs-dashboard'></i> <span class="nav_name">Dashboard</span>
+								class='bx bxs-dashboard'></i> <span class="nav_name"> Dashboard </span>
 						</a></li>
 						<li><a href="/patients/add-form" class="nav_link"> <i
 								class="fa-solid fa-hospital-user"></i><span class="nav_name">Add
 									Patient</span>
 						</a></li>
 						<li><a href="/patients" class="nav_link"><i
-								class="fa-solid fa-hospital-user"></i> <span class="nav_name">All
+								class="fa fa-th-list" aria-hidden="true"></i> <span class="nav_name">All
 									Patients</span> </a></li>
 						<li><a href="/admits" class="nav_link"><i
-								class="fa-solid fa-hospital-user"></i> <span class="nav_name">All Admit
+								class="fa fa-th-list" aria-hidden="true"></i> <span class="nav_name">All Admit
 									Patients</span> </a></li>
 									
 						<li><a href="/patients/reports" class="nav_link"><i
-					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">Reports</span> </a></li>
+					        	class="fa fa-address-card"></i> <span class="nav_name">Reports</span> </a></li>
 
 
-                         <li><a href="/opds/OpdDiagnosis" class="nav_link"><i
-					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">OpdDiagnosis</span> </a></li>
+                         <!-- <li><a href="/opds/OpdDiagnosis" class="nav_link"><i
+					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">OpdDiagnosis</span> </a></li> -->
                          
                           <li><a href="/diagnosiss/getAllPatient" class="nav_link"><i
-					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">DiagnosisHistory</span> </a></li>
+					        	class="fa fa-history"></i> <span class="nav_name">Diagnosis History</span> </a></li>
                          
                          
 					</ul>

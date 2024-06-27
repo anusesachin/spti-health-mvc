@@ -21,11 +21,10 @@
 	
 </script>
 <style>
-
 .col-form-label.spti-label {
 	font-size: 16px;
 	color: #333;
-	margin-top:12px;
+	margin-top: 12px;
 }
 
 .error {
@@ -35,6 +34,7 @@
 	margin-top: 1px;
 	padding: 1px;
 }
+
 .popup {
 	display: none;
 	width: 350px;
@@ -59,15 +59,20 @@
 	margin: 5px 0px;
 	border: 1px solid lightgray;
 }
-.col-md-12{
-color:black ;
 
+.col-md-12 {
+	color: black;
 }
 
 .popup input[type="datetime-local"] {
 	font-size: 11px;
 	padding: 4px;
 	color: #757575;
+}
+
+.col-form-label.spti-label {
+	font-size: 13px;
+	color: #333;
 }
 </style>
 </head>
@@ -77,39 +82,48 @@ color:black ;
 	<div class="height-90">
 		<div class="main-content  ">
 			<div class="modal-body">
-				<h5 class="modal-title" id="exampleModalLabel" style= "margin-bottom: 6px;">Discharge Patient</h5>
-				<form class="login-form" id="login-form" action="/discharge" method="post">
-				<input type="hidden" name="patientId" value="${patient.id}">
-				<input type="hidden" name="admitPatientId" value="${admitPatientResponseDto.id}">
-				<div class="row">
-					<div class="col-md-4">
-						<label class="col-form-label spti-label">MLC NO.</label>
-						<input type="text"name="MLC_No" class="col-md-12 spti-inpt"  style= "margin-bottom: -1px;"placeholder="eg. 01 ">
-					</div>
-					<div class="col-md-4">
-						<label class="col-form-label spti-label">IPD NO.</label>
-						<input type="text"name="IPD_No" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;" placeholder="eg. 01 ">
-					</div>	
-					<div class="col-md-4">
+				<h5 class="modal-title" id="exampleModalLabel"
+					style="margin-bottom: 6px;">Discharge Patient</h5>
+				<hr>
+				<form class="login-form" id="login-form" action="/discharge"
+					method="post">
+					<input type="hidden" name="patientId" value="${patient.id}">
+					<input type="hidden" name="admitPatientId"
+						value="${admitPatientResponseDto.id}">
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">MLC NO.</label> <input
+								type="text" name="MLC_No" class="col-md-12 spti-inpt"
+								style="margin-bottom: -1px;" placeholder="eg. 01 ">
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">IPD NO.</label> <input
+								type="text" name="IPD_No" class="col-md-12 spti-inpt"
+								style="margin-bottom: -1px;" placeholder="eg. 01 ">
+						</div>
+						<div class="col-md-4">
 							<label class="col-form-label spti-label">Patient Name</label> <span
 								class="mandatory-sign">*</span> <input type="text"
-								name="firstName" style= "margin-bottom: -1px;" class="col-md-12 spti-inpt" value= "${patient.firstName}">
-						</div>			
-				</div>
+								name="firstName" style="margin-bottom: -1px;"
+								class="col-md-12 spti-inpt" value="${patient.firstName}">
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Last Name</label> <input
-								type="text" name="lastName" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;"
-								value="${patient.lastName}">
+								type="text" name="lastName" class="col-md-12 spti-inpt"
+								style="margin-bottom: -1px;" value="${patient.lastName}">
 						</div>
 
 						<div class="col-md-4">
-							<label class="col-form-label spti-label">Mobile Number</label>
-							<input type="text" name="phoneNumber" style= "margin-bottom: -1px;" class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
+							<label class="col-form-label spti-label">Mobile Number</label> <input
+								type="text" name="phoneNumber" style="margin-bottom: -1px;"
+								class="col-md-12 spti-inpt" value="${ patient.phoneNumber}">
 						</div>
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Gender</label> <select
-								name="gender" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;">
+								name="gender" class="col-md-12 spti-inpt"
+								style="margin-bottom: -1px;">
 								<c:choose>
 									<c:when test="${patient.gender == 'MALE'}">
 										<option value="Male" selected>Male</option>
@@ -135,23 +149,26 @@ color:black ;
 								</c:choose>
 							</select>
 						</div>
-						</div>
-						<div class="row">
+					</div>
+					<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Age</label> <input
-								type="number" name="age" class="col-md-12 spti-inpt"  style= "margin-bottom: -1px;" style= "margin-bottom: 17px;"
+								type="number" name="age" class="col-md-12 spti-inpt"
+								style="margin-bottom: -1px;" style="margin-bottom: 17px;"
 								value="${patient.age}">
 						</div>
 
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Status</label> <select
-								name="admitDischargeStatus" class="col-md-12 spti-inpt" >
+								name="admitDischargeStatus" class="col-md-12 spti-inpt">
 								<c:choose>
-									<c:when test="${admitPatientResponseDto.admitDischargeStatus == 'Admit'}">
+									<c:when
+										test="${admitPatientResponseDto.admitDischargeStatus == 'Admit'}">
 										<option value="Admit" selected>Admit</option>
 										<option value="Discharge">Discharge</option>
 									</c:when>
-									<c:when test="${admitPatientResponseDto.admitDischargeStatus == 'Discharge'}">
+									<c:when
+										test="${admitPatientResponseDto.admitDischargeStatus == 'Discharge'}">
 										<option value="Discharge" selected>Discharge</option>
 										<option value="Admit">Admit</option>
 									</c:when>
@@ -164,119 +181,137 @@ color:black ;
 							</select>
 						</div>
 
-						
-		                          <div class="col-md-4">
-												<label class="col-form-label spti-label">Admission Date And Time</label>
-		    									<input type="datetime-local" style= "margin-bottom: -1px;" name="admissionDate" class="col-md-12 spti-inpt" value="${admitPatientResponseDto.admissionDate}">
-		
-								</div>
-								</div>
-								<div class="row">
-								<div class="col-md-4">
-										<label class="col-form-label spti-label">Discharge Date And Time</label>
-				    					<input type="datetime-local" name="dischargedAt" class="col-md-12 spti-inpt" style= "margin-bottom: -1px;" style= "margin-bottom: 17px;" >
-								</div>
-								
-								  <div class="col-md-4">
-												<label class="col-form-label spti-label">Consultatnt</label>
-		    									<input type="text" name="consultatnt"  style= "margin-bottom: -1px;" class="col-md-12 spti-inpt">
-		
-								</div>
-								<div class="col-md-4">
-										<label class="col-form-label spti-label">Diagnosis</label>
-				    					<input type="text" name="diagnosis"  style= "margin-bottom: -1px;" class="col-md-12 spti-inpt">
-								</div>
-								</div>
-		
-								<!-- <div class="col-md-4">
+
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">Admission Date
+								And Time</label> <input type="datetime-local"
+								style="margin-bottom: -1px;" name="admissionDate"
+								class="col-md-12 spti-inpt"
+								value="${admitPatientResponseDto.admissionDate}">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">Discharge Date
+								And Time</label> <input type="datetime-local" name="dischargedAt"
+								class="col-md-12 spti-inpt" style="margin-bottom: -1px;"
+								style="margin-bottom: 17px;">
+						</div>
+
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">Consultatnt</label> <input
+								type="text" name="consultatnt" style="margin-bottom: -1px;"
+								class="col-md-12 spti-inpt">
+
+						</div>
+						<div class="col-md-4">
+							<label class="col-form-label spti-label">Diagnosis</label> <input
+								type="text" name="diagnosis" style="margin-bottom: -1px;"
+								class="col-md-12 spti-inpt">
+						</div>
+					</div>
+
+					<!-- <div class="col-md-4">
 										<label class="col-form-label spti-label">Admission Time
 									</label> <input type="time" name="admissionTime"
 											class="col-md-12 spti-inpt">
 									</div> -->
-									<div class="row">
+					<div class="row">
 						<div class="col-md-4">
 							<label class="col-form-label spti-label">Address</label>
-							<textarea class="col-md-12 spti-textarea-height" style= "margin-bottom: -1px;"  name="address" style= "margin-bottom: 17px;"
-								>${patient.address}</textarea>
+							<textarea class="col-md-12 spti-textarea-height"
+								style="margin-bottom: -1px;" name="address"
+								style="margin-bottom: 17px;">${patient.address}</textarea>
 						</div>
 						<div class="col-md-4">
-												<label class="col-form-label spti-label">Amount Paid</label>
-		    									<input type="text" name="amountPaid"  style= "margin-bottom: -1px;" value="${amountPaid}" class="col-md-12 spti-inpt">
-		
-								</div>
+							<label class="col-form-label spti-label">Amount Paid</label> <input
+								type="text" name="amountPaid" style="margin-bottom: -1px;"
+								value="${amountPaid}" class="col-md-12 spti-inpt">
+
+						</div>
 						<div class="col-md-4">
-												<label class="col-form-label spti-label">Amount to be Paid</label>
-		    									<input type="text" name="amounttobePaid"  style= "margin-bottom: -1px;" value="${amounttobePaid}" class="col-md-12 spti-inpt">
-		
-								</div></div>
-								<div class="row">
+							<label class="col-form-label spti-label">Amount to be
+								Paid</label> <input type="text" name="amounttobePaid"
+								style="margin-bottom: -1px;" value="${amounttobePaid}"
+								class="col-md-12 spti-inpt">
+
+						</div>
+					</div>
+					<br>
+					<div class="row">
 						<div class="col-md-12">
-							<label class="col-form-label spti-label">Treatment History</label>
-							<%-- <textarea rows="10" cols="50" class="col-md-12 spti-textarea-height" name="clinical_History">
-							<c:forEach var="treatment" items="${treatmentList}">
-			${treatment.medicineName}, ${treatment.medicineTime},${treatment.treatmentDate},${treatment.bill}
-        </c:forEach>
-								</textarea> --%>
-								<div class="col-md-12 spti-textarea-height" style="height: fit-content !important;" name="clinical_History">
-								 <table style="width:100%;">
-        <thead>
-            <tr>
-                <th style="width: 5%;">SNo</th>
-						<th style="width: 15%;">Medicine</th>
-						<th style="width: 15%;">Medicine Time</th>
-						<th style="width: 15%;">Medicine Date</th>
-						<th style="width: 15%;">Bill($)</th>
-						<th style="width: 15%;">Bill Paid</th>
-						<th style="width: 20%;">Payment Mode</th>
-            </tr>
-        </thead>
-        <tbody>
-		<% int i = 1; %> 
-            <c:forEach var="treatment" items="${treatmentList}">
-                <tr>
-                   <td style="width: 5%;"><%= i %> <% i++; %></td>
-									<td style="width: 15%;">${treatment.medicineName}</td>
-									<td style="width: 15%;">${treatment.medicineTime}</td>
-									<td style="width: 15%;">${treatment.treatmentDate}</td>
-									<td style="width: 15%;">${treatment.bill}</td>
-									<td style="width: 15%;">
-									<span class="<c:choose>
-                <c:when test="${treatment.billPaid eq 'Yes'}">
-                    badge bg-success
-                </c:when>
-                <c:otherwise>
-                    badge bg-danger
-                </c:otherwise>
-             </c:choose>"
-      style="width:30%">${treatment.billPaid}</span></td>
-									<td style="width: 20%;">${treatment.paymentMode}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table> </div>
-						</div>
+							<label class="modal-title" >Treatment
+								History</label>
+														
+							<div class="col-md-12 spti-textarea-height"
+								style="height: fit-content !important;" name="clinical_History">
+								<table
+									style="width: 100%; border-collapse: collapse; border: 1px solid #dddddd;">
+									<thead>
+										<tr>
+											<th style="width: 5%; border-bottom: 1px solid #dddddd;">SNo</th>
+											<th style="width: 15%; border-bottom: 1px solid #dddddd;">Medicine</th>
+											<th style="width: 15%; border-bottom: 1px solid #dddddd;">Medicine
+												Time</th>
+											<th style="width: 15%; border-bottom: 1px solid #dddddd;">Medicine
+												Date</th>
+											<th style="width: 15%; border-bottom: 1px solid #dddddd;">Bill($)</th>
+											<th style="width: 15%; border-bottom: 1px solid #dddddd;">Bill
+												Paid</th>
+											<th style="width: 20%; border-bottom: 1px solid #dddddd;">Payment
+												Mode</th>
+										</tr>
+									</thead>
+									<tbody>
+										<% int i = 1; %>
+										<c:forEach var="treatment" items="${treatmentList}">
+											<tr>
+												<td style="border-bottom: 1px solid #dddddd;"><%= i %>
+													<% i++; %></td>
+												<td style="border-bottom: 1px solid #dddddd;">${treatment.medicineName}</td>
+												<td style="border-bottom: 1px solid #dddddd;">${treatment.medicineTime}</td>
+												<td style="border-bottom: 1px solid #dddddd;">${treatment.treatmentDate}</td>
+												<td style="border-bottom: 1px solid #dddddd;">${treatment.bill}</td>
+												<td style="border-bottom: 1px solid #dddddd;"><span
+													class="<c:choose>
+                                <c:when test="${treatment.billPaid eq 'Yes'}">
+                                    badge bg-success
+                                </c:when>
+                                <c:otherwise>
+                                    badge bg-danger
+                                </c:otherwise>
+                            </c:choose>"
+													style="width: 30%">${treatment.billPaid}</span></td>
+												<td style="border-bottom: 1px solid #dddddd;">${treatment.paymentMode}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
 
 					</div>
-					<div class="col-md-12" style="position: relative;">
-						<button type="submit"
-							class="btn btn-warning btn-sm add-btn float-end Spti-btn">Discharge</button>
-						<button type="button"
-							class="btn btn-secondary btn-sm cancel-btn float-end mx-1"
-							onclick="window.history.back()">Cancel</button>
-					</div>
-				</form>
 			</div>
-
+			<div class="col-md-12" style="position: relative;">
+				<button type="submit"
+					class="btn btn-warning btn-sm add-btn float-end Spti-btn">Discharge</button>
+				<button type="button"
+					class="btn btn-secondary btn-sm cancel-btn float-end mx-1"
+					onclick="window.history.back()">Cancel</button>
+			</div>
+			</form>
 		</div>
+
 	</div>
-	
+	</div>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
-	
+
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#addUserModel').modal('show');
