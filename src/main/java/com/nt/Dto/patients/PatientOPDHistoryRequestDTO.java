@@ -16,7 +16,7 @@ import lombok.Setter;
 public class PatientOPDHistoryRequestDTO {
 
    // @NotBlank(message = "Doctor's name cannot be blank")
- //   @Size(min = 1, max = 100, message = "Doctor's name must be between 1 and 100 characters")
+   //   @Size(min = 1, max = 100, message = "Doctor's name must be between 1 and 100 characters")
     private String seenByDoctor;
 
    // @NotBlank(message = "Diagnosis cannot be blank")
