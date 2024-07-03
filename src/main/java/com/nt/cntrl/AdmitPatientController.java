@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.nt.Dto.patients.AdmitPatientPageDto;
 import com.nt.Dto.patients.AdmitPatientRequestDto;
 import com.nt.Dto.patients.AdmitPatientResponseDto;
+import com.nt.Dto.patients.DischargePatientPageDto;
 import com.nt.Dto.patients.PatientResponseDto;
 import com.nt.service.AdmitPatientService;
 import com.nt.service.PatientService;
@@ -72,6 +73,27 @@ public class AdmitPatientController {
 			if (listofAdmitPatient != null) {
 				model.addAttribute("list", listofAdmitPatient);
 				return "patients/allAdmitPatient";
+			} else {
+				model.addAttribute("errorMsg", "something went wrong");
+				return "error";
+			}
+		}
+
+		return "login";
+
+	}
+	
+	@GetMapping("/getAllDischarge")
+	public String allDischarge(Model model, HttpSession session) {
+
+		String user = (String) session.getAttribute("username");
+
+		DischargePatientPageDto  listDischargePatients = admitPatientService.findAllDischarge();
+
+		if (user != null) {
+			if (listDischargePatients != null) {
+				model.addAttribute("list", listDischargePatients);
+				return "patients/dischargePatients";
 			} else {
 				model.addAttribute("errorMsg", "something went wrong");
 				return "error";
@@ -147,6 +169,7 @@ public class AdmitPatientController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
+
 	
 	@ResponseBody
     @GetMapping("/todaysWeeksMonthPatient/{todayrecord}")
@@ -176,8 +199,8 @@ public class AdmitPatientController {
      }
 	
 	  @ResponseBody
-	    @GetMapping("/getTodayWeeklyMonthlyDischargePatient/{todayrecord}")
-	    public ResponseEntity<?> getTodayWeeklyMonthlyDischargePatients(@PathVariable String todayrecord) {
+	  @GetMapping("/getTodayWeeklyMonthlyDischargePatient/{todayrecord}")
+	  public ResponseEntity<?> getTodayWeeklyMonthlyDischargePatients(@PathVariable String todayrecord) {
 	        try {
 	            List<AdmitPatientResponseDto> todayWeeklyMonthlyDischargePatients = admitPatientService.todayWeeklyMonthlyDischargePatient(todayrecord);
 	            if (todayWeeklyMonthlyDischargePatients != null && !todayWeeklyMonthlyDischargePatients.isEmpty()) {

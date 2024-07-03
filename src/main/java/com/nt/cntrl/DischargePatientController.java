@@ -73,7 +73,7 @@ public class DischargePatientController {
 			
 		dischargePatientService.dischargePatient( dto );
 			
-		return "redirect:/admits";
+		return "redirect:/admits/getAllDischarge";
 	}
 
 }

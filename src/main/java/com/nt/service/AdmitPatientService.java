@@ -5,6 +5,7 @@ import java.util.List;
 import com.nt.Dto.patients.AdmitPatientPageDto;
 import com.nt.Dto.patients.AdmitPatientRequestDto;
 import com.nt.Dto.patients.AdmitPatientResponseDto;
+import com.nt.Dto.patients.DischargePatientPageDto;
 import com.nt.Dto.patients.PatientResponseDto;
 
 public interface AdmitPatientService {
@@ -30,6 +31,8 @@ public interface AdmitPatientService {
 	List<AdmitPatientResponseDto> todayDischargePatient(String todayrecord);
 
 	List<AdmitPatientResponseDto> todayWeeklyMonthlyDischargePatient(String todayrecord);
+
+	DischargePatientPageDto findAllDischarge();
 
 //	List<PatientResponseDto> findDataByStartToEndDate(String todayrecord);
 
