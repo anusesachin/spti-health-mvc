@@ -25,4 +25,6 @@ public class AdmitPatientResponseDto {
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime admissionDate;
 	
+	private Long amounttobePaid;
+
 }

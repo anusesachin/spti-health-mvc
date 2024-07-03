@@ -226,12 +226,12 @@
 						<li><a href="/patients/reports" class="nav_link"><i
 					        	class="fa fa-address-card"></i> <span class="nav_name">Reports</span> </a></li>
 
-
-                         <!-- <li><a href="/opds/OpdDiagnosis" class="nav_link"><i
-					        	class="fa-solid fa-hospital-user"></i> <span class="nav_name">OpdDiagnosis</span> </a></li> -->
-                         
+      
                           <li><a href="/diagnosiss/getAllPatient" class="nav_link"><i
 					        	class="fa fa-history"></i> <span class="nav_name">Diagnosis History</span> </a></li>
+                         
+                          <li><a href="/admits/getAllDischarge" class="nav_link"><i
+					        	class="fa fa-history"></i> <span class="nav_name">All Discharge </span> </a></li>
                          
                          
 					</ul>

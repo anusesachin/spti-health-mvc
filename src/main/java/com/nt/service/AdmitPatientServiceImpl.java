@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import com.nt.Dto.patients.AdmitPatientPageDto;
 import com.nt.Dto.patients.AdmitPatientRequestDto;
 import com.nt.Dto.patients.AdmitPatientResponseDto;
+import com.nt.Dto.patients.DischargePatientPageDto;
 import com.nt.Dto.patients.PatientResponseDto;
 
 
@@ -72,6 +73,26 @@ public class AdmitPatientServiceImpl implements AdmitPatientService {
 
 			ResponseEntity<AdmitPatientPageDto> res = template.exchange(url, HttpMethod.GET, entity,
 					AdmitPatientPageDto.class);
+			return res.getBody();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	@Override
+	public DischargePatientPageDto findAllDischarge() {
+		RestTemplate template = new RestTemplate();
+		String url = "http://localhost:9696/admits/getAllDischargePatients/?pageNo=0";
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<>("body", headers);
+		try {
+
+			ResponseEntity<DischargePatientPageDto> res = template.exchange(url, HttpMethod.GET, entity,
+					DischargePatientPageDto.class);
 			return res.getBody();
 
 		} catch (Exception e) {
@@ -160,6 +181,7 @@ public class AdmitPatientServiceImpl implements AdmitPatientService {
 
 		return null;
 }
+	
 
 	@Override
 	public List<PatientResponseDto> getTodaysWeekMonthPatient(String todayrecord) {
