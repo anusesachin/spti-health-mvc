@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.nt.Dto.patients.AdmitPatientResponseDto;
 import com.nt.Dto.patients.PatientPageDto;
 import com.nt.Dto.patients.PatientRequestDto;
 import com.nt.Dto.patients.PatientResponseDto;
@@ -132,5 +133,21 @@ public class PatientServiceImpl implements PatientService {
 
 		return null;
 	}
+
+	@Override
+	public AdmitPatientResponseDto getAdmitPatientById(long id) {
+	    RestTemplate template = new RestTemplate();
+	    String url = "http://localhost:9696/admits/patient/id/" + id; // Added the missing slash
+	    HttpHeaders headers = new HttpHeaders();
+	    HttpEntity<String> entity = new HttpEntity<>(headers); // No need to include "body" for a GET request
+	    try {
+	        ResponseEntity<AdmitPatientResponseDto> res = template.exchange(url, HttpMethod.GET, entity, AdmitPatientResponseDto.class);
+	        return res.getBody();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}}
+
 	
-}
+

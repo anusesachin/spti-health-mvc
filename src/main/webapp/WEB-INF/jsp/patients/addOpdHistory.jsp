@@ -21,11 +21,10 @@
 	
 </script>
 <style>
-
 .col-form-label.spti-label {
 	font-size: 13px;
 	color: #333;
-	margin-top:15px;
+	margin-top: 15px;
 }
 
 .error {
@@ -35,6 +34,7 @@
 	margin-top: 1px;
 	padding: 1px;
 }
+
 .error-label {
 	margin-top: -10px;
 }
@@ -43,11 +43,9 @@
 	margin-left: 140px;
 }
 
-.col-md-12{
-color:black ;
-
+.col-md-12 {
+	color: black;
 }
-
 </style>
 </head>
 
@@ -76,25 +74,37 @@ color:black ;
 											class="mandatory-sign">*</span> <input type="hidden"
 											name="patientId" class="col-md-12 spti-inpt"
 											value="${patient.id }"> <input type="text"
-											name="fullname" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;"
+											name="fullname" class="col-md-12 spti-inpt"
+											style="margin-bottom: -3px;"
 											value="${patient.firstName} ${patient.lastName}">
 									</div>
 
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Seen by
-											doctor</label> <input type="text" name="seenByDoctor"  style= "margin-bottom: -3px;"
-											class="col-md-12 spti-inpt" placeholder="e.g Akash Anuse">
+											doctor</label> <input type="text" name="seenByDoctor"
+											style="margin-bottom: -3px;" class="col-md-12 spti-inpt"
+											placeholder="e.g Akash Anuse">
 									</div>
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Diagnosis</label> <input
-											type="text" name="diagnosis" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;"
-											placeholder="e.g Maleria">
+											type="text" name="diagnosis" class="col-md-12 spti-inpt"
+											style="margin-bottom: -3px;" placeholder="e.g Maleria">
+										<select name="disease" id="diagnosisHistory"
+											class="form-select">
+											<option value="" disabled selected>Please Select An
+												Option of Diagnosis-Type</option>
+											<c:forEach items="${Diagnosis}" var="disease">
+												<option value="${disease.diagnosis}"
+													<c:if test="${disease.id eq param.disease}">selected="selected"</c:if>>${disease.diagnosis}</option>
+											</c:forEach>
+										</select>
+
 									</div>
 									<div class="mb-3">
 										<label for="w3review"
 											class="form-label col-form-label spti-label">Treatment</label>
-										<textarea class="form-control" id="w3review" rows="3" style= "margin-bottom: -3px;"
-											name="treatment"></textarea>
+										<textarea class="form-control" id="w3review" rows="3"
+											style="margin-bottom: -3px;" name="treatment"></textarea>
 									</div>
 
 									<!-- <div class="col-md-6">
@@ -104,19 +114,21 @@ color:black ;
 
 									<div class="col-md-6">
 										<label class="col-form-label spti-label">Bill</label> <input
-											type="text" name="bill" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;"
-											placeholder="e.g 500">
+											type="text" name="bill" class="col-md-12 spti-inpt"
+											style="margin-bottom: -3px;" placeholder="e.g 500">
 									</div>
 
 									<div class="col-md-4">
 										<label class="col-form-label spti-label">Pending
-											Amount</label> <input type="text" name="pendingAmount" style= "margin-bottom: -3px;"
-											class="col-md-12 spti-inpt" placeholder="e.g 100">
+											Amount</label> <input type="text" name="pendingAmount"
+											style="margin-bottom: -3px;" class="col-md-12 spti-inpt"
+											placeholder="e.g 100">
 									</div>
 
 									<div class="col-md-4">
 										<label class="col-form-label spti-label">Status</label> <select
-											name="billStatus" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;">
+											name="billStatus" class="col-md-12 spti-inpt"
+											style="margin-bottom: -3px;">
 											<option disabled="disabled" selected>Select status</option>
 											<option value="Paid">Paid</option>
 											<option value="Pending">Pending</option>
@@ -125,7 +137,8 @@ color:black ;
 
 									<div class="col-md-5">
 										<label class="col-form-label spti-label">Payment Type</label>
-										<select name="paymentType" class="col-md-12 spti-inpt" style= "margin-bottom: -3px;">
+										<select name="paymentType" class="col-md-12 spti-inpt"
+											style="margin-bottom: -3px;">
 											<option disabled="disabled" selected>Select Payment
 												Type</option>
 											<option value="Online">Online</option>
@@ -136,7 +149,7 @@ color:black ;
 									<div class="mb-3">
 										<label for="w3review"
 											class="form-label col-form-label spti-label">Note</label>
-										<textarea class="form-control" id="w3review" rows="3" 
+										<textarea class="form-control" id="w3review" rows="3"
 											name="Note"></textarea>
 									</div>
 

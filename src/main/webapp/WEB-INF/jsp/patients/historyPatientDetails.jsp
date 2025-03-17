@@ -21,15 +21,37 @@
 	
 </script>
 <style>
+.row {
+	border-left: 10px;
+}
+
 .col-md-5 {
 	margin-left: 140px;
 }
+
 .spti-label {
-    font-size: 200px; /* Adjust the font size as needed */
-    font-weight: bold; /* Optionally, you can make the label bold */
-  
+	font-size: 200px; /* Adjust the font size as needed */
+	font-weight: bold; /* Optionally, you can make the label bold */
 }
 
+.col-md-4 {
+	border: solid;
+	border-collapse: collapse;
+	border-left: none;
+}
+
+.col-form-label-fs-6 {
+	
+}
+
+.mb-3 {
+	margin-top: 10px;
+	margin-bottom: -1rem !important;
+}
+
+.modal-content {
+	
+}
 </style>
 </head>
 
@@ -41,9 +63,10 @@
 			<div class="modal fade" id="addUserModel" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
+					<div class="modal-content" style="border: solid;">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">History</h5>
+							<h5 class="modal-title" id="exampleModalLabel"
+								style="background-color: #6bd9e9; border: solid 2px; padding: 4px;">History</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true" onclick="window.history.back()">x</span>
@@ -51,50 +74,62 @@
 						</div>
 						<div class="modal-body">
 							<form class="login-form"
-								action="/opds/historyPatientDetails-form/${OPDHistory.id }" method="post">
-								 
-									<div class="row">
+								action="/opds/historyPatientDetails-form/${OPDHistory.id }"
+								method="post" style="border-left: solid; border-color: gray;">
 
-                                         <div class="col-md-4">
-											<label class="col-form-label fs-6"> Date
-											</label><br> <span class="col-md-12 spti-inpt border-0 ">
-												${ OPDHistory.treatmentDate }</span>
-										</div>
+								<div class="row">
 
-										<div class="col-md-4">
-											<label class="col-form-label fs-6">Seen by
-												doctor</label> <input type="text" name="seenByDoctor"
-												class="col-md-12 spti-inpt border-0 "
-												value="${OPDHistory.seenByDoctor}">
+									<div class="mb-2"
+										style="margin-left: 10px; background-color: #cb74d752; width: 98%;">
+										<div style="display: inline; align-items: center;">
+											<i class="fas fa-calendar-alt"
+												style="color: #ff00b8; margin-right: 5px;"></i> <label
+												class="col-form-label fs-6"
+												style="padding: 2px; color: red; font-size: 2px;">
+												Date </label>
 										</div>
-										<div class="col-md-4">
-											<label class="col-form-label fs-6">Diagnosis</label> <input
-												type="text" name="diagnosis" class="col-md-12 spti-inpt border-0 "
-												placeholder="e.g Maleria"
-												value="${OPDHistory.diagnosis.diagnosis}">
-										</div>
-										<div class="mb-3">
-											<label class="form-label col-form-label fs-6">Treatment</label>
-											<textarea class="form-control"  id="w3review" rows="3"
-												name="treatment">${OPDHistory.treatment}</textarea>
-										</div>
-
-
+										<br> <span class="col-md-12 spti-inpt border-0">
+											${ OPDHistory.treatmentDate } </span>
 									</div>
-								
-								<div class="col-md-12">
+
+
+									<div class="col-md-2" style="margin-left: 10px;width: auto">
+										<label class="col-form-label fs-6" style="color: red;">Seen
+											by doctor</label> <input type="text" name="seenByDoctor"
+											class="col-md-12 spti-inpt border-0 "
+											value="${OPDHistory.seenByDoctor}">
+									</div>
+									<div class="col-md-2" style="margin-left: 10px;">
+										<label class="col-form-label fs-6" style="color: red;">Diagnosis</label>
+										<input type="text" name="diagnosis"
+											class="col-md-12 spti-inpt border-0 "
+											placeholder="e.g Maleria"
+											value="${OPDHistory.diagnosis.diagnosis}">
+									</div>
+									<div class="mb-3"
+										style="border-top-style: none; margin-bottom: 0rem !important; margin-left: 23px;">
+										<label class="form-label col-form-label fs-6"
+											style="margin-left: -12px;color: red;">Treatment</label>
+										<textarea class="form-control" id="w3review" rows="3"
+											name="treatment" style="width: 650px;">${OPDHistory.treatment}</textarea>
+									</div>
+
+
+								</div>
+
+								<!-- <div class="col-md-12">
 
 									<button type="button"
 										class="btn btn-secondary btn-sm cancel-btn float-end mx-1"
 										onclick="window.history.back()">Close</button>
-								</div> 
+								</div> -->
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
 
 	<script type="text/javascript">
 		$(window).on('load', function() {

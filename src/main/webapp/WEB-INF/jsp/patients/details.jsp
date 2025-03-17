@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.time.LocalDateTime"%>
@@ -11,7 +12,9 @@
 <link rel="icon" type="image/x-icon" href="Verity.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <style>
 /* Add your custom CSS styles here */
 .patient-details {
@@ -46,13 +49,13 @@ li {
 				<h5 class="modal-title" id="exampleModalLabel">Patients
 					Overview</h5>
 				<hr>
-				
+
 				<div class="row">
 					<div class="col-md-12 ">
 
 						<div class="card">
 							<div class="card-body">
-							
+
 								<div class="row">
 									<div class="col-md-2">
 										<img src="https://picsum.photos/200/300" class="img-thumbnail"
@@ -60,15 +63,31 @@ li {
 									</div>
 									<div class="col-md-10">
 										<div class="row PatientsOverview1">
-											<div class="col-md-6">
+											<div class="col-md-4">
 												<div class="border-bottom pb-2 my-2">
-												<h2>${patientList.firstName} ${patientList.lastName}</h2>
-												<p class="m-0 p-0">${patientList.address}</p>
+													<h2>${patientList.firstName}${patientList.lastName}</h2>
+													<p class="m-0 p-0">${patientList.address}</p>
 												</div>
-											 </div>
-											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/patients/admit-form/${patientList.id }">Admit</a></div>
-											 <div class="col-md-2 ml-2"><a class="btn btn-sm Spti-btn" href="/opds/history-form/patients/${patientList.id }">Add OPD</a></div>
-											 <div class="col-md-2"><a class="btn btn-sm Spti-btn" href="/opds/historyPatient-from/patients/${patientList.id }">History</a></div>
+											</div>
+											<div class="col-md-2 ml-2">
+												<a class="btn btn-sm Spti-btn"
+													href="/patients/admit-form/${patientList.id }">Admit</a>
+											</div>
+											<div class="col-md-2 ml-2">
+												<a class="btn btn-sm Spti-btn"
+													href="/opds/history-form/patients/${patientList.id }">Add
+													OPD</a>
+											</div>
+
+											<div class="col-md-2">
+												<a class="btn btn-sm Spti-btn"
+													href="/opds/historyPatient-from/patients/${patientList.id }">History</a>
+											</div>
+											<div class="col-md-2">
+												<a class="btn btn-sm Spti-btn"
+													href="/admits/PatientDetails/${patientList.id }">admitHistory</a>
+											</div>
+
 										</div>
 
 										<div class="row">
@@ -120,8 +139,10 @@ li {
 															<tr>
 																<td><a
 																	onclick="window.location.href='/opds/historyPatientDetails-form/${opd.id}'">
-																		<span style="font-weight: 500" class="text-info">${opd.treatmentDate}</span>
+																		<span style="font-weight: 500; cursor: pointer;"
+																		class="text-info">${opd.treatmentDate}</span>
 																</a></td>
+
 																<td>${opd.seenByDoctor }</td>
 																<td>${opd.diagnosis }</td>
 																<td>${opd.bill }</td>
@@ -161,7 +182,7 @@ li {
 															<tr>
 																<td><a
 																	onclick="window.location.href='/opds/historyPatientDetails-form/${opd.id}'">
-																		<span style="font-weight: 500" class="text-info">${opd.treatmentDate}</span>
+																		<span style="font-weight: 500 ; cursor: pointer ;"class="text-info">${opd.treatmentDate}</span>
 																</a></td>
 																<td>${opd.seenByDoctor }</td>
 																<td>${opd.diagnosis.diagnosis }</td>

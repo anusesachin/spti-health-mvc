@@ -41,6 +41,14 @@ public class TreatmentController {
 		model.addAttribute("treatmentList", treatmentResponse);
 		return "patients/treatment";
 	}
+	@GetMapping("/admittreatment/{id}")
+	public String admitTreatmentForm(@PathVariable Long id, Model model) {
+		PatientResponseDto result1 = patientService.getPatientById(id);
+		model.addAttribute("patient", result1);
+		List<TreatmentResponse> treatmentResponse=treatmentService.getTreatmentdetailsByAdimittance(id);
+		model.addAttribute("treatmentList", treatmentResponse);
+		return "patients/Admitpatientdetails";
+	}
 
 	@PostMapping("/add/{id}")
 	public String addAdmittedPatientTreatmentDetails(@PathVariable Long id,

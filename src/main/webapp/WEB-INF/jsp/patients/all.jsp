@@ -55,7 +55,7 @@
 											<div class="userName">
 												<h5 class="m-0" style="cursor: pointer;">
 													<a
-														onclick="window.location.href='/patients/details-form/${user.id}'">${user.firstName}
+														onclick="window.location.href='/patients/Admitpatientdetails/${user.id}'">${user.firstName}
 														${user.lastName}</a>
 												</h5>
 											</div>

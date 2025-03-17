@@ -44,7 +44,7 @@ public class OpdPatientController {
 	public List<PatientOPDHistoryResponseDto> opdPatientHistory(@PathVariable String disease,@PathVariable String todayrecord, @PathVariable String ages) {
 
 		List<PatientOPDHistoryResponseDto>opdPatientHistorys =  opdPatientHistoryService.opdPatientHistory(disease, todayrecord, ages);
-		if(opdPatientHistorys ==null || opdPatientHistorys.isEmpty()) {
+		if(opdPatientHistorys == null || opdPatientHistorys.isEmpty()) {
 			return Collections.emptyList();
 		}else {
 			return opdPatientHistorys;

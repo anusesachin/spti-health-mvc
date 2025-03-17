@@ -22,7 +22,11 @@ public class AdmitPatientResponseDto {
 	
 	private PatientResponseDto patient;
 	
+	private Diagnosis Diagnosis ;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime admissionDate;
 	
+	
+
 }
